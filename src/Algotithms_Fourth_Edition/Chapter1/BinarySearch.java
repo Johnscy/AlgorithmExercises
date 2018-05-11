@@ -1,4 +1,6 @@
+package Algotithms_Fourth_Edition.Chapter1;
 import java.util.Arrays;
+import edu.princeton.cs.algs4.*;
 public class BinarySearch{
 	public static int rank(int key,int a[]){
 		int lo = 0;
@@ -13,8 +15,8 @@ public class BinarySearch{
 	}
 
 	public static void main(String args[]){
-		int whitelist = In.readInts(args[0]);
-		Array.sort(whitelist);
+		int[] whitelist = In.readInts(args[0]);
+		Arrays.sort(whitelist);
 		while(!StdIn.isEmpty()){
 			int key = StdIn.readInt();
 			if(rank(key,whitelist) < 0)
