@@ -26,7 +26,7 @@ public class ex1_3_10 {
                     StdOut.print("error");
                     return;
                 }
-            }else if(input.equals("+") ||input.equals("-") || input.equals("*") || input.equals("/")) {
+            }else if(input.equals("+") ||input.equals("-") || input.equals("*") || input.equals("/")) {     //当输入是运算符op（+、- 、×、/）时候
                 boolean isLowerPriority = false;
                 boolean isLeftParen = false;
                 if(!stack.isEmpty()) {
@@ -35,19 +35,19 @@ public class ex1_3_10 {
                     if ((input.equals("*") || input.equals("/")) && ops.equals("+") || ops.equals("-"))
                         isLowerPriority = true;
                 }
-                if (!(stack.isEmpty() || isLowerPriority || isLeftParen)) {
+                if (!(stack.isEmpty() || isLowerPriority || isLeftParen)) {             //a)循环，当（栈非空and栈顶不是开括号and栈顶运算符的优先级不低于输入的运算符的优先级）时，反复操作：将栈顶元素出栈输出
                     while (!stack.isEmpty())
                         StdOut.print(stack.pop());
                 }
-                stack.push(input);
+                stack.push(input);                                                      //b)把输入的运算符op压栈
 
             }
-            else    //假设不输入其他乱七八糟的东西，恩，遵守基本法的输入
+            else    //假设不输入其他乱七八糟的东西，恩，遵守基本法的输入。遇到数字直接打印。
                 StdOut.print(input);
         }
         while(!stack.isEmpty()){
             String s =stack.pop();
-            if(s.equals("(")){
+            if(s.equals("(")){            //当字符串读完，栈不空时，弹栈并打印。若弹出“（”则报错。
                 StdOut.print("error");
                 break;
             }
