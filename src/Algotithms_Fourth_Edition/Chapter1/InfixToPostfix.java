@@ -35,11 +35,11 @@ public class InfixToPostfix {
                     if ((input.equals("*") || input.equals("/")) && (ops.equals("+") || ops.equals("-")))
                         isStackTopLowerPriority = true;
                 }
-                if (!stack.isEmpty() && !isStackTopLowerPriority && !isLeftParen) {             //a)循环，当（栈非空and栈顶不是开括号and栈顶运算符的优先级不低于输入的运算符的优先级）时，反复操作：将栈顶元素出栈输出
+                if (!stack.isEmpty() && !isStackTopLowerPriority && !isLeftParen) {  //a)循环，当（栈非空and栈顶不是开括号and栈顶运算符的优先级不低于输入的运算符的优先级）时，反复操作：将栈顶元素出栈输出
                     while (!stack.isEmpty())
                         System.out.print(stack.pop());
                 }
-                stack.push(input);                                                      //b)把输入的运算符op压栈
+                stack.push(input);                                                    //b)把输入的运算符op压栈
             } else    //假设不输入其他乱七八糟的东西，恩，遵守基本法的输入。遇到数字直接打印。
                 System.out.print(input);
         }
