@@ -52,7 +52,7 @@ public class InfixToPrefix {
                         resultStack.push(stack.pop());//System.out.print(stack.pop());//
                 }
                 stack.push(input);                                                  //b)把输入的运算符op压栈
-            } else    //假设不输入其他乱七八糟的东西，恩，遵守基本法的输入。遇到数字直接打印。
+            } else    //假设不输入其他乱七八糟的东西，恩，遵守基本法的输入。遇到数字直接压入结果栈（最后要再逆序一次）。
                 resultStack.push(input);//System.out.print(input);//
 
         }
