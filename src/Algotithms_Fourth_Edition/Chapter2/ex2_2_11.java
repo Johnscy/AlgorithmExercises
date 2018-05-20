@@ -29,16 +29,14 @@ public class ex2_2_11 {                          //改进版Merge Sort
     }
     public static void merge(Comparable[] a, Comparable[] aux,int lo, int mid, int hi){
         //将有序的a[lo,mid]与a[mid+1,hi]借助辅助数组aux归并到a[lo,hi]
-        int i = lo,j = hi;//mid+1;
-        for(int k = lo; k <= mid;k++)
+        int i = lo,j = mid+1;
+        for(int k = 0; k <= hi;k++)
             aux[k] = a[k];
-        for(int k = mid+1; k <= hi;k++)
-            aux[k] = a[hi-k+mid+1];
         for (int k = lo;k <= hi;k++){
-            //if(i > mid)                     a[k] = aux[j--];
-            //else if(j < mid+1)              a[k] = aux[i++];
-            if(less(aux[i],aux[j]))         a[k] = aux[i++];
-            else                            a[k] = aux[j--];
+            if(i > mid)                     a[k] = aux[j++];
+            else if(j > hi)                 a[k] = aux[i++];
+            else if(less(aux[i],aux[j]))    a[k] = aux[i++];
+            else                            a[k] = aux[j++];
         }
     }
     private static boolean less(Comparable v,Comparable w){
