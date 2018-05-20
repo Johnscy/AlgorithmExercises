@@ -1,7 +1,7 @@
 package Algotithms_Fourth_Edition.Chapter2;
 import java.util.*;
 
-public class MergeBU_sort {
+public class MergeBU_sort {                  //归并的自底向上实现
     private static Comparable[] aux;        //辅助数组
     public static void sort(Comparable[] a){
         int N =a.length;
