@@ -1,16 +1,20 @@
 package Algotithms_Fourth_Edition.Chapter2;
 import java.util.*;
 
-public class MergeBU_sort {
-    private static Comparable[] aux;        //辅助数组
+public class ex2_2_9 {
+//  private static Comparable[] aux;        //辅助数组
     public static void sort(Comparable[] a){
-        int N =a.length;
-        aux = new Comparable[N];
-        for (int sz = 1;sz < N;sz += sz)
-            for (int lo = 0;lo < N - sz;lo +=sz+sz)
-                merge(a,lo,lo+sz-1,Math.min(lo+sz+sz-1, N-1));
+        Comparable[] aux = new Comparable[a.length];
+        sort(a,aux,0,a.length-1);
     }
-    public static void merge(Comparable[] a, int lo, int mid, int hi){
+    private static void sort(Comparable[] a, Comparable[] aux, int lo, int hi){
+        if(hi <= lo) return;
+        int mid = lo + (hi - lo)/2;
+        sort(a,aux,lo,mid);
+        sort(a,aux,mid+1,hi);
+        merge(a,aux,lo,mid,hi);
+    }
+    public static void merge(Comparable[] a, Comparable[] aux,int lo, int mid, int hi){
         //将有序的a[lo,mid]与a[mid+1,hi]归并到a[lo,hi]
         int i = lo,j = mid+1;
         for(int k = 0; k <= hi;k++)
@@ -22,10 +26,10 @@ public class MergeBU_sort {
             else                            a[k] = aux[j++];
         }
     }
-    private static boolean less(Comparable v, Comparable w){
+    private static boolean less(Comparable v,Comparable w){
         return v.compareTo(w) < 0;
     }
-    private static void exch(Comparable[] a, int i, int j){
+    private static void exch(Comparable[] a,int i,int j){
         Comparable t = a[i];
         a[i] = a[j];
         a[j] = t;

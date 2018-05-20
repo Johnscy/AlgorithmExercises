@@ -14,7 +14,7 @@ public class Merge_sort {                                   //归并的自顶向
         sort(a,mid+1,hi);
         merge(a,lo,mid,hi);
     }
-    public static void merge(Comparable[] a ,int lo ,int mid ,int hi){
+    public static void merge(Comparable[] a, int lo, int mid, int hi){
         //将有序的a[lo,mid]与a[mid+1,hi]归并到a[lo,hi]
         int i = lo,j = mid+1;
         for(int k = 0; k <= hi;k++)
@@ -26,10 +26,10 @@ public class Merge_sort {                                   //归并的自顶向
             else                            a[k] = aux[j++];
         }
     }
-    private static boolean less(Comparable v,Comparable w){
+    private static boolean less(Comparable v, Comparable w){
         return v.compareTo(w) < 0;
     }
-    private static void exch(Comparable[] a,int i,int j){
+    private static void exch(Comparable[] a, int i, int j){
         Comparable t = a[i];
         a[i] = a[j];
         a[j] = t;
