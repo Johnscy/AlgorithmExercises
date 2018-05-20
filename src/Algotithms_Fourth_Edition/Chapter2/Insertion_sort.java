@@ -35,7 +35,7 @@ public class Insertion_sort {
     }
 
     public static void main(String[] args) {
-        String[] input = null;
+        String[] input;
         Scanner sc = new Scanner(System.in);
         System.out.println("请输入一组数字/字母，并用空格隔开：");
 //      while(sc.hasNext())

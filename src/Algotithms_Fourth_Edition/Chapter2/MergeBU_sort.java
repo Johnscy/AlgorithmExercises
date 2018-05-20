@@ -1,16 +1,25 @@
 package Algotithms_Fourth_Edition.Chapter2;
-
 import java.util.*;
 
-public class Selection_sort {
+public class MergeBU_sort {
+    private static Comparable[] aux;        //辅助数组
     public static void sort(Comparable[] a){
-        int N = a.length;
-        for(int i = 0;i < N;i++){
-            int min = i;
-            for (int j = i + 1;j < N;j++){
-                if(less(a[j],a[min]))  min = j;
-            }
-            exch(a,i,min);
+        int N =a.length;
+        aux = new Comparable[N];
+        for (int sz = 1;sz < N;sz += sz)
+            for (int lo = 0;lo < N - sz;lo +=sz+sz)
+                merge(a,lo,lo+sz-1,Math.min(lo+sz+sz-1, N-1));
+    }
+    public static void merge(Comparable[] a ,int lo ,int mid ,int hi){
+        //将有序的a[lo,mid]与a[mid+1,hi]归并到a[lo,hi]
+        int i = lo,j = mid+1;
+        for(int k = 0; k <= hi;k++)
+            aux[k] = a[k];
+        for (int k = lo;k <= hi;k++){
+            if(i > mid)                     a[k] = aux[j++];
+            else if(j > hi)                 a[k] = aux[i++];
+            else if(less(aux[i],aux[j]))    a[k] = aux[i++];
+            else                            a[k] = aux[j++];
         }
     }
     private static boolean less(Comparable v,Comparable w){
@@ -56,5 +65,4 @@ public class Selection_sort {
         }
 
     }
-
 }
