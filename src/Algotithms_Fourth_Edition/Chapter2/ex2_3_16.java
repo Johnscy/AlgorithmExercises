@@ -1,6 +1,5 @@
 package Algotithms_Fourth_Edition.Chapter2;
-
-import java.util.Scanner;
+import java.util.*;
 
 public class ex2_3_16 {
         // postcondition: a[lo..hi] is best-case input for quicksorting that subarray
