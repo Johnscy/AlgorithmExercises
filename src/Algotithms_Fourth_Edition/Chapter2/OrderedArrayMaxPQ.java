@@ -1,5 +1,4 @@
 package Algotithms_Fourth_Edition.Chapter2;
-import edu.princeton.cs.algs4.*;
 
 public class OrderedArrayMaxPQ <Key extends Comparable<Key>>{
     private Key[] pq;
