@@ -18,7 +18,7 @@ public class Selection {
         return j;
     }
 
-    private static Comparable select(Comparable[] a, int k){
+    public static Comparable select(Comparable[] a, int k){
         List<Comparable> list = new LinkedList<Comparable>();
         for (int x = 0;x < a.length ;x++){
             list.add(a[x]);
