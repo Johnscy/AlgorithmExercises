@@ -1,7 +1,7 @@
 package Algotithms_Fourth_Edition.Chapter2;
 import edu.princeton.cs.algs4.*;
 
-public class Multway {
+public class Multiway {
     public static void merge(In[] streams){
         int N = streams.length;
         IndexMinPQ<String> pq = new IndexMinPQ<String>(N);
