@@ -54,7 +54,12 @@ public class IndexMinPQ <Key extends Comparable<Key>>{
     }
 
     public void delete(int k){
-
+        int index = qp[k];
+        exch(index,N--);
+        swim(index);
+        sink(index);
+        keys[k] = null;
+        qp[k] = -1;
     }
 
     private boolean less(int i, int j){
@@ -62,11 +67,12 @@ public class IndexMinPQ <Key extends Comparable<Key>>{
     }
 
     private void exch(int i, int j){
-        Key t = keys[pq[i]];
-        keys[pq[i]] = keys[pq[j]];
-        keys[pq[j]] = t;
-        qp[i] = ;
-        qp[j] = ;
+        int x = pq[i];
+        pq[i]= pq[j];
+        pq[j] = x;
+        int y = qp[i];
+        qp[i] = qp[j];
+        qp[j] = y;
     }
 
     private void swim(int k){
