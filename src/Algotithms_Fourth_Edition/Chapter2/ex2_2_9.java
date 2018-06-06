@@ -67,6 +67,5 @@ public class ex2_2_9 {
             System.out.println();
             show(input);
         }
-
     }
 }
