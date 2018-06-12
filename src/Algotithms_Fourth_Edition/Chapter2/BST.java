@@ -158,6 +158,21 @@ public class BST<Key extends Comparable<Key>,Value> {
         if (cmplo <= 0 && cmphi >= 0)   queue.offer(x.key);
         if (cmphi > 0)  keys(x.right,queue,lo,hi);
     }
+    public void printLevel(){
+        printLevel(root);
+    }
+    private void printLevel(Node x){
+        Queue<Node> queue = new LinkedList<Node>();
+        queue.offer(x);
+        while (!queue.isEmpty()){
+            Node node = queue.poll();
+            System.out.println("Key:" + node.key+ " " +"Value:" + node.val);//访问节点
+            if(node.left != null)
+                queue.offer(node.left);
+            if(node.right != null)
+                queue.offer(node.right);
+        }
+    }
 
     public static void main(String[] args){
 
