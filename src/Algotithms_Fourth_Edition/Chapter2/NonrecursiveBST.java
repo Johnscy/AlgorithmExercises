@@ -16,11 +16,6 @@ public class NonrecursiveBST<Key extends Comparable<Key>,Value>{
             this.N = N;
         }
     }
-
-<<<<<<< HEAD
-=======
-    
->>>>>>> 4e29d2c6971513107c134785010ff009afe357e7
     public int size(Node x){
         if (x == null)  return 0;
         else            return x.N;
