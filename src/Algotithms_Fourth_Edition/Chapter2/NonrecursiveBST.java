@@ -179,5 +179,18 @@ public class NonrecursiveBST<Key extends Comparable<Key>,Value>{
         return rank;
     }
 
+    public void printLevel(Node x){
+        Queue<Node> queue = new LinkedList<Node>();
+        queue.offer(x);
+        while (!queue.isEmpty()){
+            Node node = queue.poll();
+            System.out.println("Key:" + node.key+ " " +"Value:" + node.val);//访问节点
+            if(node.left != null)
+                queue.offer(node.left);
+            if(node.right != null)
+                queue.offer(node.right);
+        }
+    }
+
     public static void main(String[] args){}
 }
