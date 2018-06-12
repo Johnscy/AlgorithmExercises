@@ -89,7 +89,7 @@ public class NonrecursiveBST<Key extends Comparable<Key>,Value>{
      ***************************************************************************/
     public Key min(Node x){
         //Node x = root;
-        while (x != null)
+        while (x.left != null)
             x = x.left;
         return x.key;
     }
@@ -99,7 +99,7 @@ public class NonrecursiveBST<Key extends Comparable<Key>,Value>{
      ***************************************************************************/
     public Key max(Node x){
         //Node x = root;
-        while (x != null)
+        while (x.right != null)
             x = x.right;
         return x.key;
     }
@@ -108,53 +108,59 @@ public class NonrecursiveBST<Key extends Comparable<Key>,Value>{
      *Key that smaller than or equal to "key"
      ***************************************************************************/
     public Key floor(Key key){
+        if (key == null) throw new IllegalArgumentException("key is null");
         Node x = root;
+        Key result = null;
         while (x != null){
             int cmp = key.compareTo(x.key);
             if (cmp == 0)            return x.key;
             else if (cmp < 0)        x = x.left;
             else {
-                Node t = x.right;
-                if (min(t).compareTo(key) > 0 || t == null) return x.key;
-                x = t;
+                    result = x.key;
+                    x = x.right;
+//                Node t = x.right;
+//                if (min(t).compareTo(key) > 0 || t == null) return x.key;
+//                x = t;
             }
         }
-        if (x == null)  return null;
-        return x.key;
+        return result;
     }
 
     /***************************************************************************
      *Key that greater than or equal to "key"
      ***************************************************************************/
     public Key ceiling(Key key){
+        if (key == null) throw new IllegalArgumentException("key is null");
         Node x = root;
+        Key result = null;
         while (x != null){
             int cmp = key.compareTo(x.key);
             if (cmp == 0)            return x.key;
             else if (cmp > 0)        x = x.right;
             else{
-                Node t = x.left;
-                if (max(t).compareTo(key) < 0 || t == null) return x.key;
-                x = t;
+                    result = x.key;
+                    x = x.left;
+//                Node t = x.left;
+//                if (max(t).compareTo(key) < 0 || t == null) return x.key;
+//                x = t;
             }
         }
-        if (x == null)  return null;
-        return x.key;
+        return result;
     }
 
     /***************************************************************************
      *Select the key whose rank is k
      ***************************************************************************/
     public Key select(int k){   //k从0开始。排名为k即树中有k个小于它的键。
+        if (k < 0 || k > size(root))    return null;
         Node x = root;
-        if (k == 0)     return min(root);
-        int t = size(x.left);
-        while (t != k){
+        while (x != null){
+            int t = size(x.left);
             if (t > k)          {x = x.left;}   // k = k
             else if (t < k)     {x = x.right;k = k - t - 1;} //k = k - t -1
-            t = size(x.left);
+            else                return x.key;
         }
-        return x.key;
+        return null;
     }
 
     /***************************************************************************
