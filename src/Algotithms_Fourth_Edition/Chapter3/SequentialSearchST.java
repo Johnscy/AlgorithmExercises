@@ -1,4 +1,4 @@
-package Algotithms_Fourth_Edition.Chapter2;
+package Algotithms_Fourth_Edition.Chapter3;
 import java.util.*;
 /**
  * 顺序查找，基于无序链表

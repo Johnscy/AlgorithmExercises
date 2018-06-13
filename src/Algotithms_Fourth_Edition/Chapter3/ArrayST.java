@@ -1,4 +1,4 @@
-package Algotithms_Fourth_Edition.Chapter2;
+package Algotithms_Fourth_Edition.Chapter3;
 import java.util.*;
 
 /**
