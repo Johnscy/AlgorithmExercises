@@ -39,7 +39,6 @@ public class UnorderedArrayMaxPQ <Key extends Comparable<Key>>{
         pq[j] = t;
     }
 
-
     public static void main(String[] args){
         UnorderedArrayMaxPQ UAPQ = new UnorderedArrayMaxPQ(10);
         UAPQ.insert("hahahahah");
