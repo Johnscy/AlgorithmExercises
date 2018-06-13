@@ -1,6 +1,11 @@
 package Algotithms_Fourth_Edition.Chapter3;
 import java.util.*;
 
+/**
+ * 有序数组中的二分查找
+ * @param <Key>
+ * @param <Value>
+ */
 public class BinarySearchST <Key extends Comparable<Key>,Value>{
     private static final int INIT_CAPACITY = 2;
     private Key[] keys;
