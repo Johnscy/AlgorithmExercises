@@ -1,6 +1,9 @@
 package Algotithms_Fourth_Edition.Chapter3;
 import edu.princeton.cs.algs4.*;
 
+/**
+ * 统计频率出现最高的单词（用符号表）
+ */
 public class FrequencyCounter {
     public static void main(String[] args){
         int minlen = Integer.parseInt(args[0]);     //记录最小键长
