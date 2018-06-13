@@ -2,7 +2,7 @@ package Algotithms_Fourth_Edition.Chapter2;
 
 public class OrderedArrayMaxPQ <Key extends Comparable<Key>>{
     private Key[] pq;
-    private int N;  //elements of PQ
+    private int N;      //elements of PQ
     public OrderedArrayMaxPQ(int capacity){
         pq = (Key[]) new Comparable[capacity];
         N = 0;
