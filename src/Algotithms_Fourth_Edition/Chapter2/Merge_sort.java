@@ -50,7 +50,6 @@ public class Merge_sort {                                   //归并的自顶向
         String[] input;
         Scanner sc = new Scanner(System.in);
         System.out.println("请输入一组数字/字母，并用空格隔开：");
-//      while(sc.hasNext())
         input = sc.nextLine().split("\\s");
         if(input[0].matches("\\d+([.]\\d+)?")) {         //判断输入是整数或者小数（当然均为正的了XD），然后转为Double型比较
             Double[] inputNums = new Double[input.length];
