@@ -1,6 +1,11 @@
 package Algotithms_Fourth_Edition.Chapter3;
 import java.util.*;
 
+/**
+ * 使用非递归方法实现二叉查找树
+ * @param <Key>
+ * @param <Value>
+ */
 public class NonrecursiveBST<Key extends Comparable<Key>,Value>{
     // root of BST
     private Node root;
