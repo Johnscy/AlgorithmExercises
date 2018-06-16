@@ -1,8 +1,11 @@
 package Algotithms_Fourth_Edition.Chapter3;
+import java.util.*;
 
 public class RedBlackBST<Key extends Comparable<Key>,Value> {
     private static final boolean RED = true;
     private static final boolean BLACK = false; //结点Node的color属性
+    private Node root;      //根结点
+
     private class Node{
         Key key;            //键
         Value val;          //相关联值
@@ -17,7 +20,6 @@ public class RedBlackBST<Key extends Comparable<Key>,Value> {
             this.color  = color;
         }
     }
-    private Node root;      //根结点
 
     private boolean isRed(Node x){
         if (x == null)  return  false;
@@ -61,7 +63,35 @@ public class RedBlackBST<Key extends Comparable<Key>,Value> {
         else            return x.N;
     }
 
+    public boolean isEmpty() {
+        return root == null;
+    }
+
+    public Value get(Key key) {
+        if (key == null) throw new IllegalArgumentException("argument to get() is null");
+        return get(root, key);
+    }
+
+    private Value get(Node x, Key key) {
+        while (x != null) {
+            int cmp = key.compareTo(x.key);
+            if      (cmp < 0)   x = x.left;
+            else if (cmp > 0)   x = x.right;
+            else                return x.val;
+        }
+        return null;
+    }
+
+    public boolean contains(Key key) {
+        return get(key) != null;
+    }
+
     public void put(Key key, Value val){
+        if (key == null) throw new IllegalArgumentException("first argument to put() is null");
+        if (val == null) {
+            delete(key);
+            return;
+        }
         root = put(root,key,val);
         root.color = BLACK;
     }
@@ -73,14 +103,89 @@ public class RedBlackBST<Key extends Comparable<Key>,Value> {
         if (cmp < 0)        h.left = put(h.left,key,val);
         else if(cmp > 0)    h.right = put(h.right,key,val);
         else                h.val = val;
-        //红黑树比二叉超找树多出来的东西
+        ////////////////红黑树比二叉超找树多出来的东西/////////////////从插入结点的父结点开始遍历至根结点，检查每个结点的颜色
         if (isRed(h.right) && !isRed(h.left))       h = rotateLeft(h);
         if (isRed(h.left) && isRed(h.left.left))    h = rotateRight(h);
         if (isRed(h.left) && isRed(h.right))        flipColors(h);
-
+        //////////////////////////////////////////////////////////////
         h.N = size(h.left) + size(h.right) + 1;
         return h;
     }
+
+    public void delete(Key key){
+        if (key == null) throw new IllegalArgumentException("argument to delete() is null");
+
+        delete(root,key);
+    }
+    private Node delete(Node h, Key key){
+
+    }
+
+    public void deleteMin() {
+        if (isEmpty()) throw new NoSuchElementException("BST underflow");
+
+    }
+    private Node deleteMin(){
+
+    }
+
+    public Key floor(Key key){
+        if (key == null) throw new IllegalArgumentException("argument to floor() is null");
+        if (isEmpty()) throw new NoSuchElementException("calls floor() with empty symbol table");
+        Node x = floor(root,key);
+        if (x == null) return null;
+        return x.key;
+    }
+    private Node floor(Node x, Key key){
+        if (x == null)  return null;
+        int cmp = key.compareTo(x.key);
+        if (cmp == 0)   return x;
+        else if (cmp < 0)   return floor(x.left,key);
+        Node t = floor(x.right,key);
+        if (t != null)  return t;
+        else            return x;
+    }
+    public Key ceiling(Key key){
+        if (key == null) throw new IllegalArgumentException("argument to ceiling() is null");
+        if (isEmpty()) throw new NoSuchElementException("calls ceiling() with empty symbol table");
+        Node x = ceiling(root,key);
+        if (x == null)  return null;
+        return x.key;
+    }
+    private Node ceiling(Node x, Key key){
+        if (x == null)  return null;
+        int cmp = key.compareTo(x.key);
+        if (cmp == 0)   return x;
+        else if (cmp > 0)   return ceiling(x.right,key);
+        Node t = ceiling(x.left,key);
+        if (t != null)  return t;
+        else            return x;
+    }
+    public Key select(int k){
+        if (k < 0 || k >= size()) {
+            throw new IllegalArgumentException("argument to select() is invalid: " + k);
+        }
+        return select(root,k).key;
+    }
+    private Node select(Node x, int k){
+        if (x == null)  return null;
+        int t =size(x.left);
+        if (t > k)      return select(x.left,k);
+        else if(t < k)  return select(x.right,k-(t+1));
+        else            return x;
+    }
+    public int rank(Key key){
+        if (key == null) throw new IllegalArgumentException("argument to rank() is null");
+        return rank(root,key);
+    }
+    private int rank(Node x, Key key){
+        if (x == null)      return 0;
+        int cmp = key.compareTo(x.key);
+        if (cmp < 0)        return rank(x.left,key);
+        else if (cmp > 0)   return rank(x.right,key) + size(x.left) + 1;
+        else                return size(x.left);
+    }
+
 
 
 }
