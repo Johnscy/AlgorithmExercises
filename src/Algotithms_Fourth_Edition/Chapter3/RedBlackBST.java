@@ -26,34 +26,6 @@ public class RedBlackBST<Key extends Comparable<Key>,Value> {
         return x.color == RED;
     }
 
-    private Node rotateLeft(Node h){
-        Node x = h.right;
-        h.right = x.left;
-        x.left = h;
-        x.color = h.color;
-        h.color = RED;
-        x.N = h.N;
-        h.N = size(h.left) + size(h.right) + 1;
-        return x;
-    }
-
-    private Node rotateRight(Node h){
-        Node x = h.left;
-        h.left = x.right;
-        x.right = h;
-        x.color = h.color;
-        h.color = RED;
-        x.N = h.N;
-        h.N = size(h.left) + size(h.right) + 1;
-        return x;
-    }
-
-    private void flipColors(Node h){
-        h.color = RED;
-        h.left.color = BLACK;
-        h.right.color = BLACK;
-    }
-
     public int size(){
         return size(root);
     }
@@ -95,7 +67,6 @@ public class RedBlackBST<Key extends Comparable<Key>,Value> {
         root = put(root,key,val);
         root.color = BLACK;
     }
-
     private Node put(Node h, Key key, Value val){
         if (h == null)
             return new Node(key,val,1,RED);
@@ -112,20 +83,34 @@ public class RedBlackBST<Key extends Comparable<Key>,Value> {
         return h;
     }
 
+    public void deleteMin() {
+        if (isEmpty()) throw new NoSuchElementException("BST underflow");
+        if (!isRed(root.left) && !isRed(root.right))
+            root.color = RED;
+        root = deleteMin(root);
+        if (!isEmpty()) root.color = BLACK;
+    }
+    private Node deleteMin(Node h){
+        if (h.left == null) return null;
+        if (!isRed(h.left) && !isRed(h.left.left))  //当前结点的是2-结点，并且左子结点也是2-结点。从右子结点“借”结点加到左子结点中
+            h = moveRedLeft(h);
+        h.left = deleteMin(h.left); //当前结点不是2-结点或者左子结点不是2-结点
+        return balance(h);
+    }
+
+    public void deleteMax(){
+
+    }
+    private Node deleteMax(Node h){
+
+    }
+
     public void delete(Key key){
         if (key == null) throw new IllegalArgumentException("argument to delete() is null");
 
         delete(root,key);
     }
     private Node delete(Node h, Key key){
-
-    }
-
-    public void deleteMin() {
-        if (isEmpty()) throw new NoSuchElementException("BST underflow");
-
-    }
-    private Node deleteMin(){
 
     }
 
@@ -145,6 +130,7 @@ public class RedBlackBST<Key extends Comparable<Key>,Value> {
         if (t != null)  return t;
         else            return x;
     }
+
     public Key ceiling(Key key){
         if (key == null) throw new IllegalArgumentException("argument to ceiling() is null");
         if (isEmpty()) throw new NoSuchElementException("calls ceiling() with empty symbol table");
@@ -161,6 +147,7 @@ public class RedBlackBST<Key extends Comparable<Key>,Value> {
         if (t != null)  return t;
         else            return x;
     }
+
     public Key select(int k){
         if (k < 0 || k >= size()) {
             throw new IllegalArgumentException("argument to select() is invalid: " + k);
@@ -174,6 +161,7 @@ public class RedBlackBST<Key extends Comparable<Key>,Value> {
         else if(t < k)  return select(x.right,k-(t+1));
         else            return x;
     }
+
     public int rank(Key key){
         if (key == null) throw new IllegalArgumentException("argument to rank() is null");
         return rank(root,key);
@@ -184,6 +172,57 @@ public class RedBlackBST<Key extends Comparable<Key>,Value> {
         if (cmp < 0)        return rank(x.left,key);
         else if (cmp > 0)   return rank(x.right,key) + size(x.left) + 1;
         else                return size(x.left);
+    }
+
+    private Node rotateLeft(Node h){
+        Node x = h.right;
+        h.right = x.left;
+        x.left = h;
+        x.color = h.color;
+        h.color = RED;
+        x.N = h.N;
+        h.N = size(h.left) + size(h.right) + 1;
+        return x;
+    }
+
+    private Node rotateRight(Node h){
+        Node x = h.left;
+        h.left = x.right;
+        x.right = h;
+        x.color = h.color;
+        h.color = RED;
+        x.N = h.N;
+        h.N = size(h.left) + size(h.right) + 1;
+        return x;
+    }
+
+    private void flipColors(Node h){
+//        h.color = RED;
+//        h.left.color = BLACK;
+//        h.right.color = BLACK;
+        h.color = !h.color;
+        h.left.color = !h.left.color;
+        h.right.color = !h.right.color;
+    }
+
+    private Node moveRedLeft(Node h){
+        flipColors(h);
+        if (isRed(h.right.left)){
+            h.right = rotateRight(h.right);
+            h = rotateLeft(h);
+            flipColors(h);
+        }
+        return h;
+    }
+
+    private Node moveRedRight(Node h){
+        flipColors(h);
+        if (isRed(h.left.left)){
+            h = rotateRight(h);
+            flipColors(h);
+        }
+        return h;
+
     }
 
 
