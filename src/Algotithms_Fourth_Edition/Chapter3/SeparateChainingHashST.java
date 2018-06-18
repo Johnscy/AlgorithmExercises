@@ -1,6 +1,11 @@
 package Algotithms_Fourth_Edition.Chapter3;
 import java.util.*;
 
+/**
+ * 用多条链表来存储键值对（同一条链表表示hash值相同）
+ * @param <Key>
+ * @param <Value>
+ */
 public class SeparateChainingHashST<Key,Value> {
     private static final int INIT_CAPACITY = 4;
     private int N;  //键值对总数
