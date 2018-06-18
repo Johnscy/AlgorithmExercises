@@ -5,7 +5,7 @@ public class SeparateChainingHashST<Key,Value> {
     private static final int INIT_CAPACITY = 4;
     private int N;  //键值对总数
     private int M;  //散列表大小
-    private SequentialSearchST<Key,Value>[] st; //存放链表对象的数组
+    private SequentialSearchST<Key,Value>[] st; //存放链表对象的数组，数组中每个元素都是顺序查找的链表
 
     public SeparateChainingHashST(){
         this(INIT_CAPACITY);
