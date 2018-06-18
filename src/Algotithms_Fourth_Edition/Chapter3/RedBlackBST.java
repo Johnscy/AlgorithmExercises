@@ -99,19 +99,67 @@ public class RedBlackBST<Key extends Comparable<Key>,Value> {
     }
 
     public void deleteMax(){
+        if (isEmpty()) throw new NoSuchElementException("BST underflow");
+        if (!isRed(root.left) && !isRed(root.right))
+            root.color = RED;
+        root = deleteMax(root);
+        if (!isEmpty()) root.color = BLACK;
 
     }
     private Node deleteMax(Node h){
-
+        if (isRed(h.left))
+            h = rotateRight(h);
+        if (h.right == null) return null;
+        if (!isRed(h.right) && !isRed(h.right.left))
+            h = moveRedRight(h);
+        h.right = deleteMax(h.right);
+        return balance(h);
     }
 
     public void delete(Key key){
         if (key == null) throw new IllegalArgumentException("argument to delete() is null");
-
-        delete(root,key);
+        if (!isRed(root.left) && !isRed(root.right))
+            root.color = RED;
+        root = delete(root,key);
+        if (!isEmpty()) root.color = BLACK;
     }
     private Node delete(Node h, Key key){
+        if (key.compareTo(h.key) < 0){
+            if (!isRed(h.left) && !isRed(h.left.left))
+                h = moveRedLeft(h);
+            h.left = delete(h.left,key);
+        }
+        else{   //包含相等和大于的情况
+            if (isRed(h.left))
+                h = rotateRight(h);
+            if (key.compareTo(h.key) == 0 && (h.right == null))
+                return null;
+            if (!isRed(h.right) && !isRed(h.right.left))
+                h = moveRedRight(h);
+            if (key.compareTo(h.key) == 0){         //删掉点之后，把该结点右子树中最小的元素填补该位置。
+                h.val = get(h.right,min(h.right).key);
+                h.key = min(h.right).key;
+                h.right = deleteMin(h.right);
+            }
+            else h.right = delete(h.right,key);
+        }
+        return balance(h);
+    }
 
+    public Key min(){
+        return min(root).key;
+    }
+    private Node min(Node x){
+        if (x.left == null) return x;
+        return min(x.left);
+    }
+
+    public Key max(){
+        return max(root).key;
+    }
+    private Node max(Node x){
+        if (x.right == null) return x;
+        return max(x.right);
     }
 
     public Key floor(Key key){
@@ -217,14 +265,25 @@ public class RedBlackBST<Key extends Comparable<Key>,Value> {
 
     private Node moveRedRight(Node h){
         flipColors(h);
-        if (isRed(h.left.left)){
+        if (!isRed(h.left.left)){
             h = rotateRight(h);
             flipColors(h);
         }
         return h;
-
     }
 
+    private Node balance(Node h){
+        if (isRed(h.right))
+            h = rotateLeft(h);
+        if (isRed(h.right) && !isRed(h.left))       h = rotateLeft(h);
+        if (isRed(h.left) && isRed(h.left.left))    h = rotateRight(h);
+        if (isRed(h.left) && isRed(h.right))        flipColors(h);
+        h.N = size(h.left) + size(h.right) + 1;
+        return h;
+    }
 
+    public static void main(String[] args) {
+
+    }
 
 }
