@@ -16,7 +16,7 @@ public class MinNumberInRotateArray {
                 int m = s + (e - s)/2;
                 if (array[m] <= array[e]){
                     e = m;
-                }else {
+                }else{
                     s = m + 1;
                 }
             }
