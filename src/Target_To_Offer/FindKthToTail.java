@@ -2,7 +2,6 @@ package Target_To_Offer;
 
 /**
  * 输入一个链表，输出该链表中倒数第k个结点。
- *
  * 思路：假设链表长N。在头结点处放俩指针P1、P2，将P1移至k处，然后P1、P2一起移动，直至P1到达尾结点，则P2的位置就是倒数第k个。
  */
 public class FindKthToTail {
