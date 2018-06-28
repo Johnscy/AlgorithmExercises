@@ -14,7 +14,7 @@ public class HasSubtree {
          TreeNode right = null;
 
          public TreeNode(int val) {
-         this.val = val;
+            this.val = val;
          }
      }
     public class Solution {
