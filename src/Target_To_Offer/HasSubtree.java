@@ -22,7 +22,6 @@ public class HasSubtree {
             if (root2 == null || root1 == null) return false;
             //如果root2是root1的子结构，后面都不用判断了；如果不是，判断root1的左子树包不包含root2；还不是，再判断root1的右子树包不包含root2。
             return isSubTree(root1,root2) || HasSubtree(root1.left,root2) || HasSubtree(root1.right,root2);
-
         }
         private boolean isSubTree(TreeNode root1,TreeNode root2){
             if (root2 == null)  //root2比较完了，之前的值都符合，那就是子结构了。
