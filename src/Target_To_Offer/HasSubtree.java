@@ -17,7 +17,6 @@ public class HasSubtree {
          this.val = val;
          }
      }
-
     public class Solution {
         public boolean HasSubtree(TreeNode root1,TreeNode root2) {
             if (root2 == null || root1 == null) return false;
