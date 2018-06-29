@@ -17,11 +17,11 @@ public class PrintMatrix {
                     arrayList.add(matrix[r1][i]);
                 for (int i = r1 + 1;i <= r2;i++)
                     arrayList.add(matrix[i][c2]);
-                if (r1 != r2)
+                if (r1 != r2)   //r1 != r2，添加的r2行的元素才不会是已经添加过的
                     for (int i = c2 - 1;i >= c1;i--)
                         arrayList.add(matrix[r2][i]);
-                if (c1 != c2)
-                    for (int i = r2 - 1;i >= r1 - 1;i--)
+                if (c1 != c2)   //c1 != c2，添加的c1列的元素才不会是已经添加过的
+                    for (int i = r2 - 1;i >= r1 + 1;i--)
                         arrayList.add(matrix[i][c1]);
                 r1++;r2--;c1++;c2--;
             }
