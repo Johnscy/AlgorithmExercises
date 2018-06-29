@@ -19,11 +19,11 @@ public class VerifySquenceOfBST {
         private boolean verify(int[] sequence, int start, int end){
             if (start >= end)   return true;
             int rootIndex = end;
-            int rootVal = sequence[rootIndex];
-            while (rootIndex > start && sequence[rootIndex - 1] > sequence[end])    //找到左右子树的分界处：左子树小于root，右子树大于root。
+            int rootVal = sequence[end];    //根结点的值。比右子树小，比左子树大。
+            while (rootIndex > start && sequence[rootIndex - 1] > rootVal)    //找到左右子树的分界处：左子树小于root，右子树大于root。
                 rootIndex--;                                                        //rootIndex - 1为左子树的根结点
             for (int i = rootIndex - 1;i >= start;i--)
-                if (sequence[i] > sequence[end])
+                if (sequence[i] > rootVal)
                     return false;
             return verify(sequence,start,rootIndex - 1) && verify(sequence,rootIndex,end - 1);//在左子树和右子树中继续递归
         }
