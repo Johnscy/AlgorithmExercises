@@ -38,7 +38,7 @@ public class Clone {
             }
 
             cur = pHead;
-            RandomListNode pHeadClone = pHead.next; //重新链接复制结点
+            RandomListNode pHeadClone = pHead.next; //将两个链表分开
             while (cur.next!= null){
                 RandomListNode node = cur.next;
                 cur.next = node.next;
