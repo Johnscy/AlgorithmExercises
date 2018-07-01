@@ -47,20 +47,20 @@ public class Convert {
                 return null;
             Stack<TreeNode> stack = new Stack<>();
             TreeNode node = null;   //记录前一个结点！
-            TreeNode head = null;
+            TreeNode head = null;   //新双向链表的左侧头！
             while (pRootOfTree != null || !stack.isEmpty()){
                 while (pRootOfTree != null){
                     stack.push(pRootOfTree);
-                    pRootOfTree = pRootOfTree.left;
+                    pRootOfTree = pRootOfTree.left;//找到当前结点的左子树的左叶子结点为止（这个值是当前结点下最小的）
                 }
                 pRootOfTree = stack.pop();
                 if (head == null)
-                    head = pRootOfTree; //将左子树的末端左叶子结点设为头
+                    head = pRootOfTree;         //将左子树的末端左叶子结点设为头
                 if (node != null)
-                    node.right = pRootOfTree;
-                pRootOfTree.left = node;
-                node = pRootOfTree;
-                pRootOfTree = pRootOfTree.right;
+                    node.right = pRootOfTree;   //前后两个结点相互链接
+                pRootOfTree.left = node;         //前后两个结点相互链接
+                node = pRootOfTree;             //将记录结点推进
+                pRootOfTree = pRootOfTree.right;    //遍历结点推进
             }
             return head;
         }
