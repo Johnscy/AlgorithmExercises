@@ -46,7 +46,7 @@ public class Convert {
             if (pRootOfTree == null)
                 return null;
             Stack<TreeNode> stack = new Stack<>();
-            TreeNode node = null;
+            TreeNode node = null;   //记录前一个结点！
             TreeNode head = null;
             while (pRootOfTree != null || !stack.isEmpty()){
                 while (pRootOfTree != null){
@@ -55,7 +55,7 @@ public class Convert {
                 }
                 pRootOfTree = stack.pop();
                 if (head == null)
-                    head = pRootOfTree;
+                    head = pRootOfTree; //将左子树的末端左叶子结点设为头
                 if (node != null)
                     node.right = pRootOfTree;
                 pRootOfTree.left = node;
