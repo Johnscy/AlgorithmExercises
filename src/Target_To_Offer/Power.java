@@ -31,7 +31,7 @@ public class Power {
             return isNegative? (1/res) : res;
         }
         private boolean equal(double v, double w){
-            if((v-w) > -0.000001 && (v-w) < 0.000001)
+            if((v - w) > -0.000001 && (v - w) < 0.000001)
                 return true;
             return false;
         }
