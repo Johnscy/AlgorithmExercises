@@ -8,7 +8,7 @@ import java.util.Map;
  * 例如输入一个长度为9的数组{1,2,3,2,2,2,5,4,2}。
  * 由于数字2在数组中出现了5次，超过数组长度的一半，因此输出2。如果不存在则输出0。
  */
-public class MoreThanHalfNum_Solution {
+public class MoreThanHalfNum {
     //骚操作 Boyer-Moore Majority Vote Algorithm
     //思路：如果有符合条件的数字，则它出现的次数比其他所有数字出现的次数和还要多。
     // 如果存在这个数，遇到它一次+1，遇到其他-1，则最后一定会大于0；
