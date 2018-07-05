@@ -34,8 +34,8 @@ public class GetLeastNumbers {
             int i = low, j = high + 1;
             int cmp = arr[low];
             while (true){
-                while (arr[++i] < cmp && i <= high);
-                while (arr[--j] > cmp && j >=low);
+                while (i < high && arr[++i] < cmp);
+                while (j >low && arr[--j] > cmp);
                 if (i >= j) break;
                 swap(arr,i,j);
             }
