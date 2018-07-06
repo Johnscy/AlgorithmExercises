@@ -19,7 +19,7 @@ public class Permutation {
 
         private void FullPermutation(char[] chars,int k, ArrayList<String> res){
             if (k == chars.length - 1){
-                String over=String.valueOf(chars);
+                String over = String.valueOf(chars);
                 //if (!res.contains(over))    //去重方法一，如果已经包含了，则不加入
                      res.add(over);
             } else{
