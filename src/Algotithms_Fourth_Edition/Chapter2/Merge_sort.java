@@ -17,7 +17,7 @@ public class Merge_sort {                                   //归并的自顶向
     public static void merge(Comparable[] a, int lo, int mid, int hi){
         //将有序的a[lo,mid]与a[mid+1,hi]归并到a[lo,hi]
         int i = lo,j = mid+1;
-        for(int k = 0; k <= hi;k++)
+        for(int k = lo; k <= hi;k++)
             aux[k] = a[k];
         for (int k = lo;k <= hi;k++){
             if(i > mid)                     a[k] = aux[j++];
