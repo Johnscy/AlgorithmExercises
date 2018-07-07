@@ -55,11 +55,11 @@ public class FirstNotRepeatingChar {
                 while (!queue.isEmpty() && cnts[queue.peek()] > 1)
                     queue.poll();
             }
-            for (int i = 0;i < str.length();i++){
-                if (!queue.isEmpty() && queue.peek() == str.charAt(i))
+            for (int i = 0;i < str.length();i++)
+                if (queue.isEmpty())
+                    return -1;
+                else if(queue.peek() == str.charAt(i))
                     return i;
-            }
-            return -1;
         }
     }
 }
