@@ -42,7 +42,7 @@ public class FirstNotRepeatingChar {
         }
     }
 
-    //
+    //队列。。和另外一题很像：字符流中第一个不重复的字符
     public class Solution_Queue {
         public int FirstNotRepeatingChar(String str) {
             if (str == null || str.length() == 0)
@@ -55,11 +55,11 @@ public class FirstNotRepeatingChar {
                 while (!queue.isEmpty() && cnts[queue.peek()] > 1)
                     queue.poll();
             }
-            for (int i = 0;i < str.length();i++)
-                if (queue.isEmpty())
-                    return -1;
-                else if(queue.peek() == str.charAt(i))
+            for (int i = 0;i < str.length();i++){
+                if (!queue.isEmpty() && queue.peek() == str.charAt(i))
                     return i;
+            }
+            return -1;
         }
     }
 }
