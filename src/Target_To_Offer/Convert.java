@@ -16,7 +16,7 @@ public class Convert {
     }
 
     //递归
-    public class Solution_recursion {
+    public class Solution_Recursion {
         private TreeNode pre = null;    //暂存上个结点
         private TreeNode head = null;
         public TreeNode Convert(TreeNode pRootOfTree) {
