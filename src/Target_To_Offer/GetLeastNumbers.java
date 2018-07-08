@@ -59,7 +59,7 @@ public class GetLeastNumbers {
         public ArrayList<Integer> GetLeastNumbers_Solution(int [] input, int k) {
             if (k > input.length || k <= 0 || input.length ==0)
                 return new ArrayList<Integer>();
-            PriorityQueue<Integer> maxHeap = new PriorityQueue<>((o1, o2) -> (o2 - o1));//!!!!!!!
+            PriorityQueue<Integer> maxHeap = new PriorityQueue<>((o1, o2) -> (o2 - o1));//!!!!!!!降序排列，队首为大
             for (int element : input){
                 maxHeap.add(element);
                 if (maxHeap.size() > k)
