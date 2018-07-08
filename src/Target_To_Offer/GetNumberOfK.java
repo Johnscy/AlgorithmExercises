@@ -15,11 +15,11 @@ public class GetNumberOfK {
         }
         //递归写法
         private int BinarySearch(int[] arr, int lo, int hi, int k){
-            if (lo >= hi)   return -1;
+            if (lo == hi)   return lo;
             int mid = (lo + hi) >> 1;
-            if (arr[mid] >= k)           return BinarySearch(arr,lo,mid - 1,k);
-            else if (arr[mid] < k)      return BinarySearch(arr,mid + 1,hi,k);
-            return lo;
+            if (arr[mid] >= k)           return BinarySearch(arr,lo,mid,k);
+            else if (arr[mid] < k)       return BinarySearch(arr,mid + 1,hi,k);
+            return 128;//随便return什么，因为递归会在lo == hi处结束XD
         }
         //非递归，循环写法
 /*        private int BinarySearch(int[] arr, int lo, int hi, int k){
