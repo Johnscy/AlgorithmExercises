@@ -19,7 +19,7 @@ public class FindPath {
      }
 
      //递归版
-    public class Solution_recursion {
+    public class Solution_Recursion {
         private ArrayList<ArrayList<Integer>> arrayList = new ArrayList<>();
 
         public ArrayList<ArrayList<Integer>> FindPath(TreeNode root,int target) {
