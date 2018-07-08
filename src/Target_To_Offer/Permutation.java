@@ -8,7 +8,7 @@ import java.util.*;
  */
 public class Permutation {
     //递归，回溯法
-    public class Solution_recursion1 {
+    public class Solution_Recursion1 {
         public ArrayList<String> Permutation(String str) {
             ArrayList<String> res = new ArrayList<>();
             if (str.length() == 0 || str == null)  return res;
@@ -40,7 +40,7 @@ public class Permutation {
         }
     }
 
-    public class Solution_recursion2 {
+    public class Solution_Recursion2 {
         private ArrayList<String> res = new ArrayList<>();
         public ArrayList<String> Permutation(String str) {
             if (str.length() == 0 || str == null)
