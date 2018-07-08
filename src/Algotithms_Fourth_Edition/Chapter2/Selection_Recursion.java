@@ -3,7 +3,7 @@ import java.util.*;
 /**
  * 找到一组数中第k小的元素，用递归。
  */
-public class Selection_recursion {
+public class Selection_Recursion {
     public static Comparable select(Comparable[] a, int k){
         List<Comparable> list = new LinkedList<Comparable>();
         for (int x = 0;x < a.length ;x++){
