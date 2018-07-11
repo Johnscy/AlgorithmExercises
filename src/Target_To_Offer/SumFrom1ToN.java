@@ -13,7 +13,7 @@ public class SumFrom1ToN {
             if (n <= 1)
                 return n;
             int res = n;
-            boolean hahaha = n > 0 && ((res +=Sum_Solution(n - 1)) > 0);
+            boolean hahaha = n > 0 && ((res +=Sum_Solution(n - 1)) > 0);//！！！！
             return res;
         }
     }
@@ -29,7 +29,7 @@ public class SumFrom1ToN {
         }
         private int Mutiplication(int a, int b){
             int res = 0;
-            boolean hahaha = ((a & 1) == 1) && ((res += b) > 0);
+            boolean hahaha = ((a & 1) == 1) && ((res += b) > 0);  //当a末位为1时，加上相应的b，否则直接将a继续右移
             a >>= 1;
             b <<= 1;
             boolean ha = (a != 0) && ((res += Mutiplication(a,b)) > 0);
