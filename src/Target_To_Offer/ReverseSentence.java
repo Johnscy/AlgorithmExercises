@@ -21,16 +21,15 @@ public class ReverseSentence {
             int i = 0, j = 0;
             boolean isFirst = true;
             while (j <= n){
-                while (chars[j] == ' ' && isFirst) {
+                while (isFirst && chars[j] == ' ') {
                     j++;
                 }
                 isFirst = false;
                 if (j == n || chars[j] == ' '){
                     reverse(chars,i,j - 1);
                     i = j + 1;
-                    j++;
                 }
-
+                j++;
             }
             reverse(chars,0,n - 1);
             return new String(chars);
