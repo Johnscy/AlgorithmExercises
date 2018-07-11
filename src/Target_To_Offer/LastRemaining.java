@@ -31,6 +31,7 @@ public class LastRemaining {
     }
 
     //递归，推公式
+    //约瑟夫环，圆圈长度为 n 的解可以看成长度为 n-1 的解再加上报数的长度 m。因为是圆圈，所以最后需要对 n 取余。
     public class Solution_Recursion {
         public int LastRemaining_Solution(int n, int m) {
             if (n <= 0 || m < 0)    //特殊输入的处理
