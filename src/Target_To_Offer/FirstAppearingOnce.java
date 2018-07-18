@@ -10,7 +10,7 @@ import java.util.Queue;
  */
 public class FirstAppearingOnce {
     //Queue
-    public class Solution {
+    public class Solution_Queue {
         private int[] count = new int[256];     //最多有256种
         private Queue<Character> queue = new LinkedList<>();
         //Insert one char from stringstream
@@ -24,6 +24,24 @@ public class FirstAppearingOnce {
         //return the first appearence once char in current stringstream
         public char FirstAppearingOnce() {
             return queue.isEmpty() ? '#' : queue.peek();
+        }
+    }
+
+    //
+    public class Solution {
+        private int[] count = new int[256];     //最多有256种
+        private StringBuffer sb = new StringBuffer();
+        //Insert one char from stringstream
+        public void Insert(char ch) {
+            sb.append(ch);
+            count[ch]++;
+        }
+        //return the first appearence once char in current stringstream
+        public char FirstAppearingOnce() {
+            for (char c : sb.toString().toCharArray())
+                if (count[c] == 1)
+                    return c;
+            return '#';
         }
     }
 }
