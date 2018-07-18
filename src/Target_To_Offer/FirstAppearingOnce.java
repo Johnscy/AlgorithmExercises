@@ -11,7 +11,7 @@ import java.util.Queue;
 public class FirstAppearingOnce {
     //Queue
     public class Solution {
-        private int[] count = new int[256];     //char为8bit，最多有256种
+        private int[] count = new int[256];     //最多有256种
         private Queue<Character> queue = new LinkedList<>();
         //Insert one char from stringstream
         public void Insert(char ch) {
