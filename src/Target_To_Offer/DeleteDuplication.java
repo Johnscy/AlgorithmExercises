@@ -16,23 +16,46 @@ public class DeleteDuplication {
             this.val = val;
         }
     }
+    //递归
+    public class Solution_Recursion {
+        public ListNode deleteDuplication(ListNode pHead) {
+            if (pHead == null || pHead.next == null)
+                return pHead;
+            ListNode node = pHead.next;
+
+        }
+    }
+
     //HashMap
     public class Solution {
         public ListNode deleteDuplication(ListNode pHead) {
-            if (pHead == null)
-                return null;
+            if (pHead == null || pHead.next == null)
+                return pHead;
             HashMap<Integer,Integer> map = new HashMap<>();
             ListNode node = pHead;
-            int index = 1;
-            while (node != null){
-                if (!map.containsKey(node.val))
-                    map.put(node.val,index++);
-                else
-                    map.put(node.val,0);
-                node = node.next;
+            int count;
+            while (node != null) {
+                count = map.get(node.val);
+                map.put(node.val, ++count);
             }
-             entry =
-
+            while (map.get(pHead.val) > 1){
+                pHead = pHead.next;
+                if (pHead == null)
+                    return null;
+            }
+            ListNode next = pHead.next;
+            node = pHead;
+            while (next != null){
+                if (map.get(next.val) > 1){
+                    next = next.next;
+                    node.next = next;
+                }
+                else {
+                    next = next.next;
+                    node = node.next;
+                }
+            }
+            return pHead;
         }
     }
 }
