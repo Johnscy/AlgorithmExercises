@@ -11,11 +11,36 @@ package LeetCode;
  * Can you do it like a boss? Do it without using any builtin function like __builtin_popcount in c++ or in any other language.
  */
 public class CountingBits_338 {
+    class Solution_DP {
+        public int[] countBits(int num) {
+            if (num < 0)
+                return null;
+            int[] res = new int[num+1];
+            res[0] = 0;
+            if (num == 0)
+                return res;
+            for (int i = 1;i <= num;i++)
+                res[i] = res[i >> 1] + (i & 1);
+            return res;
+        }
+    }
+
     class Solution {
         public int[] countBits(int num) {
-            int[] res = new int[num+1];
-
-
+            if(num < 0)
+                return null;
+            int[] count = new int[num + 1];
+            count[0] = 0;
+            if(num == 0)
+                return count;
+            int tmp;
+            for(int i = 1;i <= num;i++){
+                tmp = 0;
+                for (;i != 0;tmp++)
+                    i &= (i - 1);
+                count[i] = tmp;
+            }
+            return count;
         }
     }
 }
