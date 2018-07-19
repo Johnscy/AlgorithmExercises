@@ -21,7 +21,15 @@ public class DeleteDuplication {
             if (pHead == null || pHead.next == null)
                 return pHead;
             ListNode node = pHead.next;
-
+            if (pHead.val == node.val){     //头结点和后面的重复，往后找，找到不同为止，把它当作新的头结点，继续递归。
+                while (node != null && pHead.val == node.val)
+                    node = node.next;
+                return deleteDuplication(node);
+            }
+            else {                          //头结点和后面不同，那头结点的next指向 以下一个结点作为头结点递归后返回的结点
+                pHead.next = deleteDuplication(pHead.next);
+                return pHead;
+            }
         }
     }
 
