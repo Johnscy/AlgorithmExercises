@@ -54,7 +54,7 @@ public class ContinuousSubarraySum_523 {
             sums[0] = 0;
             for (int i = 1;i < sums.length;i++)
                 sums[i] += nums[i - 1];
-            for (int i = 2;i < nums.length;i++)
+            for (int i = 2;i < sums.length;i++)
                 for (int j = i - 2;j >= 0;j--){ //sums[i] - sums[j]之间包含的元素大于等于2个
                     if (k == 0 && (sums[i] - sums[j] == k))
                         return true;
