@@ -29,7 +29,7 @@ public class SubarraySumEqualsK_560 {
     }
 
     // = =
-    class Solution_ {
+    class Solution_DP {
         public int subarraySum(int[] nums, int k) {
             if (nums == null)
                 return -1;
