@@ -24,6 +24,7 @@ public class KthNode {
             if (pRoot == null || k < 0)
                 return null;
             InOrder(pRoot,k);
+            return res;
         }
         private void InOrder(TreeNode node,int k){
             if (node == null || k < index)
@@ -45,7 +46,7 @@ public class KthNode {
             Stack<TreeNode> stack = new Stack<>();
             TreeNode node = pRoot;
             //stack.push(pRoot);
-            while (!stack.isEmpty() || node != null){
+            while (node != null || !stack.isEmpty()){
                 while (node != null) {
                     stack.push(node);
                     node = node.left;
