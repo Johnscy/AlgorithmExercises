@@ -13,9 +13,9 @@ public class GetMedian {
         private PriorityQueue<Integer> right = new PriorityQueue<>();               //小顶堆，存储右半边元素，并且右半边元素都大于左半边。
         private int N = 0;  //元素个数
         public void Insert(Integer num) {
-            if (N % 2 == 0){
-                left.add(num);
-                right.add(left.poll());
+            if (N % 2 == 0){             //N 为偶数的情况下插入到右半边。
+                left.add(num);           //因为右半边元素都要大于左半边，但是新插入的元素不一定比左半边元素来的大，
+                right.add(left.poll());  // 因此需要先将元素插入左半边，然后利用左半边为大顶堆的特点，取出堆顶元素即为最大元素，此时插入右半边
             }else{
                 right.add(num);
                 left.add(right.poll());
