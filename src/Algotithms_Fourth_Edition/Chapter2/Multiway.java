@@ -9,7 +9,7 @@ public class Multiway {
             if(!streams[i].isEmpty())
                 pq.insert(i,streams[i].readString());
         while (!pq.isEmpty()){
-            StdOut.println(pq.minKey());
+            StdOut.println(pq.min());//minKey()
             int i = pq.delMin();
             if (!streams[i].isEmpty())
                 pq.insert(i,streams[i].readString());
