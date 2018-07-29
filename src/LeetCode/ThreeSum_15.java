@@ -34,7 +34,10 @@ public class ThreeSum_15 {
                             while (lo < hi && nums[hi] == nums[hi - 1])
                                 hi--;
                             lo++;hi--;
-                        }
+                        }else if (nums[lo] + nums[hi] > twoSum)
+                            hi--;
+                        else
+                            lo++;
                     }
                 }
             }
