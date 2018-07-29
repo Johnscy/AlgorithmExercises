@@ -45,7 +45,7 @@ public class ThreeSum_15 {
         }
     }
 
-    //暴力，有重复输出= =、
+    //暴力，有重复输出= =
     class Solution {
         public List<List<Integer>> threeSum(int[] nums) {
             List<List<Integer>> res = new ArrayList<>();
