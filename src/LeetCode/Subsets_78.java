@@ -30,7 +30,7 @@ public class Subsets_78 {    //这一题输入数组不包含重复元素！！�
         }
     }
 
-    //非递归
+    //组合，非递归
     class Solution {
         private List<List<Integer>> res = new ArrayList<>();
         public List<List<Integer>> subsets(int[] nums) {
