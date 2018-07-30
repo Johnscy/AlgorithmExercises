@@ -27,7 +27,7 @@ public class ArithmeticSlices_413 {
             int cur = 0, sum = 0;
             for (int i = 2; i < A.length; i++) {
                 if (2 * A[i - 1] == A[i - 2] + A[i]){
-                    cur += 1;       //包含A[i]的等差数列数!!!!
+                    cur += 1;        //包含A[i]的等差数列数!!!!
                     sum += cur;
                 }else
                     cur = 0;
