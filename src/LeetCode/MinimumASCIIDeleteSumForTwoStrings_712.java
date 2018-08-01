@@ -19,7 +19,7 @@ package LeetCode;
  */
 public class MinimumASCIIDeleteSumForTwoStrings_712 {
     //DP，编辑距离算法！！！！！
-    class Solution {
+    class Solution_DP1 {
         public int minimumDeleteSum(String s1, String s2) {
             if (s1.equals("") && s2.equals(""))
                 return 0;
@@ -37,6 +37,28 @@ public class MinimumASCIIDeleteSumForTwoStrings_712 {
                         dp[i][j] = Math.min(dp[i - 1][j - 1] + s1.charAt(i - 1) + s2.charAt(j - 1),Math.min(dp[i - 1][j] + s1.charAt(i - 1),dp[i][j - 1] + s2.charAt(j - 1)));
                 }
             return dp[m][n];
+        }
+    }
+
+    //
+    class Solution_DP2 {
+        public int minimumDeleteSum(String s1, String s2) {
+            if (s1.equals("") && s2.equals(""))
+                return 0;
+            int m = s1.length(), n = s2.length();
+            int[][] dp = new int[m + 1][n + 1]; //我们使用一个二维数组dp来记录从s1到s2的“距离”，dp[i][j]对应的是从s1[i:]到s2[j:]
+            for (int i = m - 1; i >= 0; i--)
+                dp[i][n] = s1.charAt(i) + dp[i + 1][n];
+            for (int j = n - 1; j >= 0; j--)
+                dp[m][j] = s2.charAt(j) + dp[m][j + 1];
+            for (int i = m - 1; i >= 0; i--)
+                for (int j = n - 1; j >= 0; j--) {
+                    if (s1.charAt(i) == s2.charAt(j))
+                        dp[i][j] = dp[i + 1][j + 1];
+                    else
+                        dp[i][j] = Math.min(dp[i + 1][j + 1] + s1.charAt(i) + s2.charAt(j),Math.min(dp[i + 1][j] + s1.charAt(i),dp[i][j + 1] + s2.charAt(j)));
+                }
+            return dp[0][0];
         }
     }
 }
