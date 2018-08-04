@@ -25,6 +25,20 @@ public class BestTimeToBuyAndSellStock_121 {
     //此题k = 1，则：
     //T[i][1][0] = max(T[i - 1][1][0], T[i - 1][1][1] + prices[i])
     //T[i][1][1] = max(T[i - 1][1][1], T[i - 1][0][0] - prices[i]) = max(T[i-1][1][1], - prices[i])
+    class Solution_ConsistentWay {
+        public int maxProfit(int[] prices) {
+            if (prices == null || prices.length <= 1)
+                return 0;
+            int T_i10 = 0, T_i11 = Integer.MIN_VALUE;
+            for (int price: prices) {
+                T_i10 = Math.max(T_i10, T_i11 + price);
+                T_i11 = Math.max(T_i11, 0 - price);
+            }
+            return T_i10;
+        }
+    }
+
+
     class Solution {
         public int maxProfit(int[] prices) {
             if(prices == null || prices.length == 0)
