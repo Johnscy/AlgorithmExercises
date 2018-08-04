@@ -20,6 +20,9 @@ package LeetCode;
  */
 public class BestTimeToBuyAndSellStockWithTransactionFee_714 {
     //DP
+    //通用公式：i为第i个交易日（0到prices.length - 1）；k为最多交易次数；第三项为当前持有的商品个数0或1（规定：必须在再一次购买之前卖掉商品）
+    //T[i][k][0] = max(T[i - 1][k][0], T[i - 1][k][1] + prices[i])
+    //T[i][k][1] = max(T[i - 1][k][1], T[i - 1][k - 1][0] - prices[i])
     class Solution {
         public int maxProfit(int[] prices, int fee) {
             if (prices == null || prices.length == 0 || fee < 0)
