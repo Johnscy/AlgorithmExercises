@@ -8,7 +8,7 @@ package LeetCode;
  * (The answer should be the total numbers in the range of 0 ≤ x < 100, excluding [11,22,33,44,55,66,77,88,99])
  */
 public class CountNumbersWithUniqueDigits_357 {
-    //DP
+    //DP:
     //F[n]:长度为n的数字中unique digits的个数
     //F[1] = 10(0,1,2,...,9)
     //F[2] = 9 * 9
