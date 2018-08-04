@@ -23,8 +23,8 @@ public class BestTimeToBuyAndSellStock_121 {
     //T[i][k][0] = max(T[i - 1][k][0], T[i - 1][k][1] + prices[i])
     //T[i][k][1] = max(T[i - 1][k][1], T[i - 1][k - 1][0] - prices[i])
     //此题k = 1，则：
-    //T[i][1][0] = max(T[i-1][1][0], T[i-1][1][1] + prices[i])
-    //T[i][1][1] = max(T[i-1][1][1], T[i-1][0][0] - prices[i]) = max(T[i-1][1][1], - prices[i])
+    //T[i][1][0] = max(T[i - 1][1][0], T[i - 1][1][1] + prices[i])
+    //T[i][1][1] = max(T[i - 1][1][1], T[i - 1][0][0] - prices[i]) = max(T[i-1][1][1], - prices[i])
     class Solution {
         public int maxProfit(int[] prices) {
             if(prices == null || prices.length == 0)
