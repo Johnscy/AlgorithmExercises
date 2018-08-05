@@ -43,8 +43,8 @@ public class IntegerBreak_343 {
             int[] dp = new int[n + 1];
             dp[1] = 1;
             for (int i = 2; i <= n; i++) {
-                for (int j = 1; j < i; j++) {
-                    dp[i] = Math.max(dp[i], (Math.max(j, dp[j])) * (Math.max(i - j, dp[i - j])));
+                for (int j = 1; j < i; j++) {       //dp[i]：数字为i时的分割乘积最大值
+                    dp[i] = Math.max(dp[i], (Math.max(j, dp[j])) * (Math.max(i - j, dp[i - j])));//将i分为j，i-j两部分，比较j与dp[j]，i-j与dp[i-j]，选择最大值相乘，最后与dp[i]比较
                 }
             }
             return dp[n];
