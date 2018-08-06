@@ -87,7 +87,7 @@ class Singleton_5 {
 //我们进行了两次if (singleton == null)检查，这样就可以保证线程安全了。
 //这样，实例化代码只用执行一次，后面再次访问时，判断if (singleton == null)，直接return实例化对象。
 class Singleton_6 {
-    private static volatile Singleton_6 instance;
+    private static volatile Singleton_6 instance;//volatile!!!!!!
     private Singleton_6(){}
     public static Singleton_6 getInstance(){
         if (instance == null)
