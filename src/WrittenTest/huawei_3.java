@@ -11,7 +11,7 @@ class RealName{
         numOfPrint = num;
     }
 }
-
+//处理字符串的问题，，，corner很多
 public class huawei_3 {
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
