@@ -1,7 +1,7 @@
 package WrittenTest;
 import java.util.*;
 
-//0 - 1背包问题
+//0 - 1背包问题，DP
 public class huawei_2 {
     //class Main {
         public static void main(String[] args) {
