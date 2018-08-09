@@ -80,16 +80,35 @@ class Main {
             a[i] = sc.nextInt();
         int k = sc.nextInt();
         int d = sc.nextInt();
-        int max = 1;
-        long[][] positive = new long[n + 1][k + 1];
-        long[][] negetive = new long[n + 1][k + 1];
-        for (int i = 1; i < ; i++) {
-
+        long[][] positive = new long[n + 1][k + 1]; //positive[i][k]:最后选择的人的序号是i，一共选了k个人。乘积是最大正数。
+        long[][] negetive = new long[n + 1][k + 1]; //negetive[i][k]:最后选择的人的序号是i，一共选了k个人。乘积是最小负数。
+        for (int i = 1; i <= n; i++) {
+            positive[i][1] = a[i];
+            negetive[i][1] = a[i];
         }
-
-        System.out.println(max);
+        long tempPositive = 0, tempNegetive = 0;
+        for (int kk = 2; kk <= k; kk++) {
+            for (int i = kk; i <= n; i++) {
+                tempPositive = Integer.MIN_VALUE;
+                tempNegetive = Integer.MAX_VALUE;
+                for (int j = Math.max(kk - 1, i - d); j <= i - 1; j++) {
+                    if (tempPositive < Math.max(positive[j][k - 1] * a[i], negetive[j][k - 1] * a[i]))
+                        tempPositive = Math.max(positive[j][k - 1] * a[i], negetive[j][k - 1] * a[i]);
+                    if (tempNegetive > Math.min(positive[j][k - 1] * a[i], negetive[j][k - 1] * a[i]))
+                        tempNegetive = Math.max(positive[j][k - 1] * a[i], negetive[j][k - 1] * a[i]);
+                }
+                positive[i][kk] = tempPositive;
+                negetive[i][kk] = tempNegetive;
+            }
+        }
+        long res = Integer.MIN_VALUE;
+        for (int i = k; i <= n; i++) {
+            if (res < positive[i][k])
+                res = positive[i][k];
+        }
+        System.out.println(res);
         }
     }
-}
+
 
 
