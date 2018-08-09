@@ -9,7 +9,7 @@ public class huawei_1 {
             while (sc.hasNext()) {
                 String s = sc.nextLine();
                 char[] chars = s.toCharArray();
-                for(int i = 0; i < chars.length; i++){
+                for(int i = 0; i < chars.length; i++){  //不能用foreach，因为这并不能改变值
                     if (chars[i] >= 'a' && chars[i] <= 'z')
                         chars[i] -= 32;
                     else if (chars[i] >= 'A' && chars[i] <= 'Z')
