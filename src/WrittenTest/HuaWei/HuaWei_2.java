@@ -1,8 +1,8 @@
-package WrittenTest;
+package WrittenTest.HuaWei;
 import java.util.*;
 
 //0 - 1背包问题，DP
-public class huawei_2 {
+public class HuaWei_2 {
     //class Main {
         public static void main(String[] args) {
             Scanner sc = new Scanner(System.in);
