@@ -1,4 +1,4 @@
-package knowledge;
+package Knowledge;
 
 /**
  * 设计模式之单例模式
