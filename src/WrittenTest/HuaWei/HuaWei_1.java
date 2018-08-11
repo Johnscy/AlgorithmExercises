@@ -1,8 +1,8 @@
-package WrittenTest;
+package WrittenTest.HuaWei;
 import java.util.*;
 
 //大小写转换
-public class huawei_1 {
+public class HuaWei_1 {
     //class Main {
         public static void main(String[] args) {
             Scanner sc = new Scanner(System.in);
