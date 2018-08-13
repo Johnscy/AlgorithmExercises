@@ -242,7 +242,7 @@ import java.util.*;
 //    }
 //}
 
-class Main {
+/*class Main {
     private static int M;
     private static int N;
     private static int maxQNow = 0;
@@ -284,6 +284,35 @@ class Main {
             DFS(matrix,hasPassedBy,i + hahaha[k][0],j + hahaha[k][1]);
         }
     }
+}*/
+
+/*class hahaha {
+    public static int maxSum(int[] prices){
+        if (prices.length == 1) return prices[0];
+        return Math.max(buy(prices, 0, prices.length - 2), buy(prices, 1, prices.length - 1));
+    }
+    private static int buy(int[] num, int lo, int hi) {
+        int include = 0, exclude = 0;
+        for (int j = lo; j <= hi; j++) {
+            int i = include, e = exclude;
+            if (num[j] > i)
+                include = e + num[j];
+            exclude = Math.max(e, i);
+        }
+        return Math.max(include, exclude);
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int size = sc.nextInt();
+        int[] prices = new int[size];
+        for (int i = 0; i < size; i++) {
+            prices[i] = sc.nextInt();
+        }
+        System.out.print(maxSum(prices));
+    }
+
+}*/
 }
 
 
