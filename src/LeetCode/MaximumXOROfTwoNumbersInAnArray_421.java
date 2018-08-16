@@ -46,26 +46,32 @@ public class MaximumXOROfTwoNumbersInAnArray_421 {
     //Trie树
     class Solution_Trie {
         class Trie{
-            private Trie child;
+            private Trie[] children;
             Trie(){
-                child = new Trie();
+                children = new Trie[2]; //两种情况，分别为代表该位为0和1
             }
-            private void insert(Trie node){
-
+            private void insert(Trie node, int num){
+                int curBit = 0;
+                for (int i = 31; i >= 0; i--) {
+                    curBit = (num >>> i) & 1;
+                    if (node.children[curBit] == null)
+                        node.children[curBit] = new Trie();
+                    node = node.children[curBit];
+                }
             }
-            private void query(){
-
+            private void query(Trie node, int num){
+                
             }
         }
         public int findMaximumXOR(int[] nums) {
             if (nums == null || nums.length < 2)
                 return 0;
             int res = 0;
-            Trie BinaryTrie = new Trie();
+            Trie root = new Trie();
             for (int i = 0; i < nums.length; i++)
-                BinaryTrie.insert(nums[i]);
-            for (int i = 0; i < ; i++) {
-
+                root.insert(root,nums[i]);
+            for (int i = 0; i < nums.length; i++) {
+                root.query(root,nums[i]);
             }
             return res;
         }
