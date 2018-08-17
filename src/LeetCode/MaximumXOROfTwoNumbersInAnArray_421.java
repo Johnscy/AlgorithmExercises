@@ -45,35 +45,45 @@ public class MaximumXOROfTwoNumbersInAnArray_421 {
 
     //Trie树
     class Solution_Trie {
+        private int maxRes = Integer.MIN_VALUE;
         class Trie{
             private Trie[] children;
             Trie(){
                 children = new Trie[2]; //两种情况，分别为代表该位为0和1
             }
-            private void insert(Trie node, int num){
+            private void insert(Trie curNode, int num){
                 int curBit = 0;
                 for (int i = 31; i >= 0; i--) {
                     curBit = (num >>> i) & 1;
-                    if (node.children[curBit] == null)
-                        node.children[curBit] = new Trie();
-                    node = node.children[curBit];
+                    if (curNode.children[curBit] == null)
+                        curNode.children[curBit] = new Trie();
+                    curNode = curNode.children[curBit];
                 }
             }
-            private void query(Trie node, int num){
-                
+            private void query(Trie curNode, int num){
+                int curSum = 0;
+                for(int i = 31; i >= 0; i --) {
+                    int curBit = (num >>> i) & 1;
+                    if(curNode.children[curBit ^ 1] != null) {  //当每位和当前输入数字反码的节点存在时
+                        curSum += (1 << i);     //累加每位异或值
+                        curNode = curNode.children[curBit ^ 1];
+                    }else {
+                        curNode = curNode.children[curBit];
+                    }
+                }
+                maxRes = Math.max(curSum,maxRes);
             }
         }
         public int findMaximumXOR(int[] nums) {
             if (nums == null || nums.length < 2)
                 return 0;
-            int res = 0;
             Trie root = new Trie();
             for (int i = 0; i < nums.length; i++)
                 root.insert(root,nums[i]);
             for (int i = 0; i < nums.length; i++) {
                 root.query(root,nums[i]);
             }
-            return res;
+            return maxRes;
         }
     }
 }
