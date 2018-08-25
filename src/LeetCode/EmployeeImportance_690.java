@@ -26,27 +26,54 @@ public class EmployeeImportance_690 {
         public int importance;
         // the id of direct subordinates
         public List<Integer> subordinates;
-    };
+    }
 
-    class Solution {
-        private int value = 0;
+    //DFS，递归，递归函数没有返回值。用类的成员变量来累加值。
+    class Solution_Recursion {
+        private int res = 0;
+        private List<Integer> sub;
         public int getImportance(List<Employee> employees, int id) {
             if (employees == null || employees.size() == 0)
-                return value;
-            Employee start;
-            for (int i = 0;i < employees.size();i++){
-                start = employees.get(i);
-                if (start.id == id){
-                    dFS(employees,start.subordinates);
-                }
-            }
-            return value;
+                return res;
+             dFS(employees,id);
+             return res;
         }
-        private void dFS(List<Employee> e, List<Integer> sub){
+        private void  dFS(List<Employee> employees, int id){
+            for (Employee e : employees)
+                if (e.id == id){
+                    res += e.importance;
+                    sub = e.subordinates;
+                    break;
+                }
             if (sub.size() == 0)
                 return;
-            value += e.get(sub).importance;
-            dFS(e.);
+            for (int subId : sub)
+               dFS(employees,subId);
+        }
+    }
+
+    //DFS，递归，递归函数有返回值。用局部变量保存累加值。
+    class Solution_Recursion2 {
+        private List<Integer> sub;
+        public int getImportance(List<Employee> employees, int id) {
+            if (employees == null || employees.size() == 0)
+                return 0;
+            return dFS(employees,id);
+        }
+        private int  dFS(List<Employee> employees, int id){
+            int res = 0;
+            for (Employee e : employees){
+                if (e.id == id){
+                    res += e.importance;
+                    sub = e.subordinates;
+                    break;
+                }
+            }
+            if (sub.size() == 0)
+                return res;
+            for (int subId : sub)
+                res += dFS(employees,subId);
+            return res;
         }
     }
 }
