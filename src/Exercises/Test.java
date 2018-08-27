@@ -364,6 +364,60 @@ class Main{
     }
 }*/
 
+//class Main {
+//    public static void main(String[] args) {
+//        Scanner in = new Scanner(System.in);
+//        int N = in.nextInt();
+//        int[][] matrix = new int[N][2];
+//        for (int i = 0; i < N; i++) {
+//            matrix[i][0] = in.nextInt();
+//            matrix[i][1] = in.nextInt();
+//        }
+//        long maxX = 0,minX = 0,maxY = 0,minY = 0;
+//        for (int i = 0; i < N; i++) {
+//                if (matrix[i][0] > maxX)
+//                    maxX = matrix[i][0];
+//                if (matrix[i][0] < minX)
+//                    minX = matrix[i][0];
+//                if (matrix[i][1]  > maxY)
+//                    maxY = matrix[i][1];
+//                if (matrix[i][1] < minY)
+//                    minY = matrix[i][1];
+//        }
+//        if (maxX == 0)
+//            System.out.print((maxY - minY) * (maxY - minY));
+//        else if (maxY == 0)
+//            System.out.print((maxX - minX) * (maxX - minX));
+//        else
+//            System.out.print((maxX - minX) > (maxY - minY) ? (maxX - minX) * (maxX - minX) : (maxY - minY) * (maxY - minY));
+//    }
+//}
+
+class Main {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int n = in.nextInt();
+        int m = in.nextInt();
+        int[] a = new int[n];
+        for (int i = 1; i <= n; i++)
+            a[i] = in.nextInt();
+        int Q = in.nextInt();
+        int[] l = new int[Q];
+        int[] r = new int[Q];
+        for (int i = 0;i < Q;i++){
+            l[i] = in.nextInt();
+            r[i] = in.nextInt();
+        }
+        int dp[] = new int[n + 1];
+        dp[0] = 0;
+        for (int i = 1;i <= n;i++)
+             dp[i] = dp[i - 1] + a[i] > m ? m : dp[i - 1] + a[i];
+        for (int i = 0; i < Q; i++) {
+            System.out.println(dp[r[i]] - dp[l[i] - 1]);
+        }
+    }
+}
+
 
 
 
