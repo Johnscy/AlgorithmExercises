@@ -30,7 +30,7 @@ public class TargetSum_494 {
                 return 0;
             int sum = 0;
             for (int e : nums) sum += e;
-            if (sum < S || S < -sum || (S + sum) % 2 > 0)
+            if (sum < S || S < -sum || (S + sum) % 2 > 0) //S + sum 必为偶数
                 return 0;
             return subsetSum(nums,(sum + S) >>> 1); //只需计算正数的情况就行
         }
