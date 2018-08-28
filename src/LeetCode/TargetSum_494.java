@@ -39,7 +39,7 @@ public class TargetSum_494 {
             dp[0] = 1; //不选择正数，则全为负数，只有一种方案。
             for (int n : nums)
                 for (int i = s;i >= n;i--)
-                    dp[i] += dp[i - n]; //记录和为i的方案
+                    dp[i] += dp[i - n]; //记录和为i的方案数
             return dp[s];
         }
     }
