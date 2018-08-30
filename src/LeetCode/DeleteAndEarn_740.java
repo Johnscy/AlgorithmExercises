@@ -44,7 +44,7 @@ public class DeleteAndEarn_740 {
     class Solution_DP2 {
         public int deleteAndEarn(int[] nums) {
             int n = 10001;
-            int[] sum = new int[n];
+            int[] sum = new int[n];//nums[i] ∈[1,10000]
             for (int num : nums)
                 sum[num] += num;
             int take = 0, skip = 0;
