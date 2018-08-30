@@ -1,6 +1,7 @@
 package WrittenTest.PinDuoDuo;
 import java.util.*;
 
+//case通过率85%
 public class SequentialDecimal {
     public static void main(String[] args){
         Scanner in = new Scanner(System.in);
