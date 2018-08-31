@@ -1,4 +1,5 @@
 package LeetCode;
+import java.io.*;
 import java.util.*;
 
 /**
@@ -24,7 +25,7 @@ import java.util.*;
  * Input: s = "catsandog", wordDict = ["cats", "dog", "sand", "and", "cat"]
  * Output: false
  */
-public class WordBreak_139 {
+//public class WordBreak_139 {
     //DP
     class Solution_DP1 {
         public boolean wordBreak(String s, List<String> wordDict) {
@@ -64,5 +65,20 @@ public class WordBreak_139 {
                     }
             return dp[s.length()];
         }
+
+        public static void main(String[] args) throws IOException {
+            Scanner sc = new Scanner(System.in);
+            String s = sc.nextLine().trim();
+            List<String> wordDict = new ArrayList<>();
+            while (sc.hasNext()) {
+                wordDict.add(sc.nextLine());
+            }
+            boolean ret = new Solution_DP2().wordBreak(s, wordDict);
+            System.out.print(ret);
+        }
     }
-}
+
+
+
+
+//}
