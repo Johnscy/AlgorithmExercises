@@ -1,5 +1,4 @@
 package LeetCode;
-
 import java.util.HashMap;
 
 /**
