@@ -32,33 +32,17 @@ public class WordBreak_139 {
                 return false;
             boolean[] dp = new boolean[s.length() + 1];
             dp[0] = true;
-//            int minWordLen = Integer.MAX_VALUE;
-//            for (String word : wordDict)
-//                minWordLen = word.length() < minWordLen ? word.length() : minWordLen;
-            for (int i = 0; i <= s.length(); i++) {  //i = minWordLen, j = 0
-//                if (i - j >= minWordLen)
+            for (int i = 0; i <= s.length(); i++) {
                     for (String str : wordDict)
-                        if (str.length() <= i ) //- j
-                            if (dp[i - str.length()])//
+                        if (str.length() <= i )
+                            if (dp[i - str.length()])
                                 if (s.substring(i - str.length(), i).equals(str)) {
                                     dp[i] = true;
-//                                    j += str.length();
                                     break;
                                 }
             }
             return dp[s.length()];
         }
-
-//        public static void main(String[] args) {
-//            Scanner sc = new Scanner(System.in);
-//            String s = sc.nextLine().trim();
-//            List<String> wordDict = new ArrayList<>();
-//            while (sc.hasNext()) {
-//                wordDict.add(sc.nextLine());
-//            }
-//            boolean ret = new Solution_DP2().wordBreak(s, wordDict);
-//            System.out.print(ret);
-//        }
     }
 
     //
@@ -77,5 +61,41 @@ public class WordBreak_139 {
                     }
             return dp[s.length()];
         }
+    }
+
+    //DP1的改进，但是失败了 = =
+    class Solution_DP1_QAQ {
+        public boolean wordBreak(String s, List<String> wordDict) {
+            if (s.equals("") || s.length() == 0 || wordDict.size() == 0)
+                return false;
+            boolean[] dp = new boolean[s.length() + 1];
+            dp[0] = true;
+            int minWordLen = Integer.MAX_VALUE;
+            for (String word : wordDict)
+                minWordLen = word.length() < minWordLen ? word.length() : minWordLen;
+            for (int i = minWordLen, j = 0; i <= s.length(); i++) {
+                if (i - j >= minWordLen)
+                for (String str : wordDict)
+                    if (str.length() == i - j)
+                        if (dp[j])
+                            if (s.substring(j, i).equals(str)) {
+                                dp[i] = true;
+                                    j += str.length();
+                                break;
+                            }
+            }
+            return dp[s.length()];
+        }
+
+//        public static void main(String[] args) {
+//            Scanner sc = new Scanner(System.in);
+//            String s = sc.nextLine().trim();
+//            List<String> wordDict = new ArrayList<>();
+//            while (sc.hasNext()) {
+//                wordDict.add(sc.nextLine());
+//            }
+//            boolean ret = new Solution_DP2().wordBreak(s, wordDict);
+//            System.out.print(ret);
+//        }
     }
 }
