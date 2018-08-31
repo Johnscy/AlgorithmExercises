@@ -1,5 +1,4 @@
 package LeetCode;
-import java.io.*;
 import java.util.*;
 
 /**
@@ -25,7 +24,7 @@ import java.util.*;
  * Input: s = "catsandog", wordDict = ["cats", "dog", "sand", "and", "cat"]
  * Output: false
  */
-//public class WordBreak_139 {
+public class WordBreak_139 {
     //DP
     class Solution_DP1 {
         public boolean wordBreak(String s, List<String> wordDict) {
@@ -33,20 +32,33 @@ import java.util.*;
                 return false;
             boolean[] dp = new boolean[s.length() + 1];
             dp[0] = true;
-            int minWordLen = Integer.MAX_VALUE;
-            for (String word : wordDict)
-                minWordLen = word.length() < minWordLen ? word.length() : minWordLen;
-            for (int i = minWordLen; i <= s.length(); i++)
-                for (String str : wordDict)
-                    if (str.length() <= i)
-                        if (dp[i - str.length()])
-                            if (s.substring(i - str.length(),i).equals(str)) {
-                                dp[i] = true;
-                                //i += minWordLen - 1;
-                                break;
-                            }
+//            int minWordLen = Integer.MAX_VALUE;
+//            for (String word : wordDict)
+//                minWordLen = word.length() < minWordLen ? word.length() : minWordLen;
+            for (int i = 0; i <= s.length(); i++) {  //i = minWordLen, j = 0
+//                if (i - j >= minWordLen)
+                    for (String str : wordDict)
+                        if (str.length() <= i ) //- j
+                            if (dp[i - str.length()])//
+                                if (s.substring(i - str.length(), i).equals(str)) {
+                                    dp[i] = true;
+//                                    j += str.length();
+                                    break;
+                                }
+            }
             return dp[s.length()];
         }
+
+//        public static void main(String[] args) {
+//            Scanner sc = new Scanner(System.in);
+//            String s = sc.nextLine().trim();
+//            List<String> wordDict = new ArrayList<>();
+//            while (sc.hasNext()) {
+//                wordDict.add(sc.nextLine());
+//            }
+//            boolean ret = new Solution_DP2().wordBreak(s, wordDict);
+//            System.out.print(ret);
+//        }
     }
 
     //
@@ -59,26 +71,11 @@ import java.util.*;
             dp[0] = true;
             for (int i = 1; i <= s.length(); i++)
                 for (int j = 0; j < i; j++)
-                    if (dp[j] && set.contains(s.substring(j,i))){
+                    if (dp[j] && set.contains(s.substring(j,i))){   //i可以取到s.length()，所以最后一个字符能取到
                         dp[i] = true;
                         break;
                     }
             return dp[s.length()];
         }
-
-        public static void main(String[] args) throws IOException {
-            Scanner sc = new Scanner(System.in);
-            String s = sc.nextLine().trim();
-            List<String> wordDict = new ArrayList<>();
-            while (sc.hasNext()) {
-                wordDict.add(sc.nextLine());
-            }
-            boolean ret = new Solution_DP2().wordBreak(s, wordDict);
-            System.out.print(ret);
-        }
     }
-
-
-
-
-//}
+}
