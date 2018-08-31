@@ -20,7 +20,7 @@ public class ContinuousSubarraySum_523 {
                 }
                 return false;
             }
-            HashMap<Integer,Integer> map = new HashMap<Integer,Integer>(){{put(0 , -1);}};; //!!!!往map里初始化0，-1
+            HashMap<Integer,Integer> map = new HashMap<Integer,Integer>(){{put(0 , -1);}}; //!!!!往map里初始化0，-1
             int runningSum = 0;
             for (int i = 0;i < nums.length;i++){
                 runningSum += nums[i];
