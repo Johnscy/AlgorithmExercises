@@ -86,16 +86,16 @@ public class WordBreak_139 {
             }
             return dp[s.length()];
         }
+    }
 
-//        public static void main(String[] args) {
-//            Scanner sc = new Scanner(System.in);
-//            String s = sc.nextLine().trim();
-//            List<String> wordDict = new ArrayList<>();
-//            while (sc.hasNext()) {
-//                wordDict.add(sc.nextLine());
-//            }
-//            boolean ret = new Solution_DP2().wordBreak(s, wordDict);
-//            System.out.print(ret);
-//        }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String s = sc.nextLine().trim();
+        List<String> wordDict = new ArrayList<>();
+        while (sc.hasNext()) {
+            wordDict.add(sc.nextLine());
+        }
+        boolean ret = new WordBreak_139().new Solution_DP2().wordBreak(s, wordDict); //创建内部类对象，调用内部类方法= =、
+        System.out.print(ret);
     }
 }
