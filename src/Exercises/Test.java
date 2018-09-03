@@ -420,6 +420,224 @@ class Main{
 
 
 
+// class Main {
+//    public static void main(String[] args) {
+//        Scanner in = new Scanner(System.in);
+//        int hp = in.nextInt();
+//        in.nextLine();
+//        int normal = in.nextInt();
+//        in.nextLine();
+//        int buffer = in.nextInt();
+//        in.nextLine();
+//        int numNormal = 0, numBuffer = 0;;
+//        if(hp % normal == 0) {
+//            numNormal = hp / normal;
+//        }else {
+//            numNormal = hp / normal + 1;
+//        }
+//        if(normal * 2 >= buffer) {
+//            System.out.println(numNormal);
+//            return ;
+//        }
+//        numBuffer = hp / buffer;
+//        if(hp % buffer==0) {
+//            System.out.println(numBuffer * 2);
+//            return ;
+//        }
+//        if(hp - buffer * numBuffer > normal) {
+//            numBuffer = numBuffer * 2 + 2;
+//            System.out.println(numBuffer);
+//            return ;
+//        }
+//        System.out.println(numBuffer * 2 + 1);
+//    }
+//}
+
+//class Main {
+//    public static void main(String[] args) {
+//        Scanner in = new Scanner(System.in);
+//        int N = in.nextInt(), M = in.nextInt();
+//        in.nextLine();
+//        char[][] chars = new char[N][M];
+//        char[][] out = new char[N][M];
+//        for (int i = 0; i < N; i++) {
+//            String[] str = in.nextLine().split("");
+//            for (int j = 0; j < M; j++)
+//                chars[i][j] = str[j].charAt(0);
+//        }
+//        for (int j = 0; j < M; j++) {
+//            int count = 0;
+//            for (int i = 0;i < N;i++){
+//                if (chars[i][j] == '.')
+//                    out[i][j] = '.';
+//                else if (chars[i][j] == 'o') {
+//                    out[i][j] = '.';
+//                    count++;
+//                }
+//                else if (chars[i][j] == 'x'){
+//                    out[i][j] = 'x';
+//                    for (int k = i - 1; k >= 0 ; k--) {
+//                        if (count <= 0)
+//                            break;
+//                        out[k][j] = 'o';
+//                        count--;
+//                    }
+//                }
+//            }
+//        }
+//        for (int i = 0; i < N; i++) {
+//            for (int j = 0; j < M; j++) {
+//                System.out.print(out[i][j]);
+//            }
+//            System.out.println();
+//        }
+//    }
+//}
+
+//class Main {
+//    public static void main(String[] args){
+//        Scanner in = new Scanner(System.in);
+//        int a = in.nextInt(), b = in.nextInt();
+//        List remainderList = new ArrayList();
+//        int start;
+//        int index = -1;
+//        boolean flag = false;
+//        while(true){
+//            int remainder = a % b;
+//            if(a < b || remainder < b){
+//                flag = true;
+//            }
+//            if(flag){
+//                index++;
+//            }
+//            if(remainder == 0){
+//                System.out.print(index + " " + 0);
+//                return;
+//            }
+//            if(flag){
+//                start = remainderList.indexOf(remainder);
+//                if(start >= 0)
+//                    break;
+//                else
+//                    remainderList.add(remainder);
+//            }
+//            a = remainder * 10;
+//        }
+//        System.out.print(start + " " + (index - start));
+//    }
+//}
+
+//class Main {
+//    public static void main(String[] args) {
+//        Scanner in = new Scanner(System.in);
+//        int N = in.nextInt(), L = in.nextInt();
+//        in.nextLine();
+//        char[][] chars = new char[N][L];
+//        String[] input = new String[N];
+//        for (int i = 0; i < N; i++) {
+//            input[i] = in.nextLine();
+//            String[] str = input[i].split("");
+//            for (int j = 0; j < L; j++)
+//                chars[i][j] = str[j].charAt(0);
+//        }
+//        char[] out = new char[L];
+//        for (int j = 0; j < L; j++) {
+//            char min = 'Z';
+//            for (int i = 0; i < N; i++) {
+//                if (chars[i][j] <= min)
+//                    min = chars[i][j];
+//            }
+//            out[j] = min;
+//        }
+//        String output = new String(out);
+//        for (int i = 0;i < N; ++i){
+//            if (output.equals(input[i])){
+//                System.out.print("-");
+//                return;
+//            }
+//        }
+//        System.out.print(output);
+//    }
+//}
+
+class Main {
+    class TreeNode{
+        int val;
+        TreeNode pre = null;
+        TreeNode(int v){
+            val = v;
+        }
+    }
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int n = in.nextInt();
+        HashMap<Integer,TreeNode> map = new HashMap<>();
+        TreeNode root = new Main().new TreeNode(-1);
+        for (int i = 0; i < n; i++) {
+            int a = in.nextInt(), b = in.nextInt();
+            in.nextInt();
+            if (b == -1) {
+                root.val = a;
+                if (!map.containsKey(a))
+                    map.put(a,root);
+            }
+            else {
+                if (!map.containsKey(a))
+                    map.put(a,new Main().new TreeNode(a));
+                if (!map.containsKey(b))
+                    map.put(b,new Main().new TreeNode(a));
+            }
+            if ()
+        }
+        for (Map.Entry<Integer,TreeNode> entry : map.entrySet()){
+             if (entry.getKey() == root.val) {
+                 TreeNode node = map.
+                 node.pre = root;
+             }
+        }
+    }
+
+    private int findParent(int a, int b, TreeNode root){
+
+    }
+}
+
+//class Main {
+//    public static void main(String[] args) {
+//        Scanner in = new Scanner(System.in);
+//        int N = in.nextInt(), M = in.nextInt();
+//        int count = 0;
+//        if (N >= M){
+//            count = N - M;
+//            System.out.print(count);
+//            return;
+//        }
+//        if (M % 2 != 0) {
+//            count++;
+//            M += 1;
+//        }
+//        while (M % 2 == 0) {
+//            M /= 2;
+//            count++;
+//        }
+//        while (M != N){
+//            if (M % 2 != 0) {
+//                M += 1;
+//                count++;
+//            }
+//            else {
+//                M /= 2;
+//                count++;
+//            }
+//        }
+//        System.out.print(count);
+//        return;
+//    }
+//}
+
+
+
+
 
 
 
