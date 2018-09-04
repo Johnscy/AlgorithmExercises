@@ -560,6 +560,7 @@ class Main{
 //    }
 //}
 
+/*
 class Main {
     class TreeNode{
         int val;
@@ -575,7 +576,7 @@ class Main {
         TreeNode root = new Main().new TreeNode(-1);
         for (int i = 0; i < n; i++) {
             int a = in.nextInt(), b = in.nextInt();
-            in.nextInt();
+            in.nextLine();
             if (b == -1) {
                 root.val = a;
                 if (!map.containsKey(a))
@@ -600,7 +601,7 @@ class Main {
     private int findParent(int a, int b, TreeNode root){
 
     }
-}
+}*/
 
 //class Main {
 //    public static void main(String[] args) {
