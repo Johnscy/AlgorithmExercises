@@ -1,7 +1,5 @@
 package Target_To_Offer;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Comparator;
 
 /**
  * 输入一个正整数数组，把数组里所有数字拼接起来排成一个数，打印能拼接出的所有数字中最小的一个。
