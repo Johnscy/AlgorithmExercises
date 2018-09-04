@@ -22,7 +22,7 @@ public class PrintMinNumber {
             int len = numbers.length;
             String[] str = new String[len];
             for (int i = 0;i < len;i++)
-                str[i] = String.valueOf(numbers[i]);//str[i] = numbers[i] + "";
+                str[i] = String.valueOf(numbers[i]);               //str[i] = numbers[i] + "";
             Arrays.sort(str,(s1,s2) -> (s1+s2).compareTo(s2 + s1));//后面的参数是重写Comparator
 //            Arrays.sort(str, new Comparator<String>() {
 //                @Override
