@@ -11,7 +11,7 @@ public class BufferAttackOrNormalAttack {
             in.nextLine();
             int buffer = in.nextInt();
             in.nextLine();
-            int numNormal = 0, numBuffer = 0;;
+            int numNormal = 0, numBuffer = 0;
             if(hp % normal == 0) {
                 numNormal = hp / normal;
             }else {
@@ -22,7 +22,7 @@ public class BufferAttackOrNormalAttack {
                 return ;
             }
             numBuffer = hp / buffer;
-            if(hp % buffer==0) {
+            if(hp % buffer == 0) {
                 System.out.println(numBuffer * 2);
                 return ;
             }
