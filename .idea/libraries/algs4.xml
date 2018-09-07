@@ -1,7 +1,7 @@
 <component name="libraryTable">
   <library name="algs4">
     <CLASSES>
-      <root url="jar://D:/java/jre/lib/ext/algs4.jar!/" />
+      <root url="jar://D:/Java/jre/lib/ext/algs4.jar!/" />
       <root url="jar://D:/java/jre/lib/ext/net.mindview.jar!/" />
     </CLASSES>
     <JAVADOC />

@@ -576,7 +576,7 @@ class Main {
         TreeNode root = new Main().new TreeNode(-1);
         for (int i = 0; i < n; i++) {
             int a = in.nextInt(), b = in.nextInt();
-            in.nextLine();
+            in.nextInt();
             if (b == -1) {
                 root.val = a;
                 if (!map.containsKey(a))
@@ -774,6 +774,50 @@ class Main {
         }
 
     }*/
+
+class Main {
+    //5 3 2
+    //3 1 1 1 2
+    //out: 3
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int k = sc.nextInt();
+        int t = sc.nextInt();
+        sc.nextLine();
+        int[] a = new int[n + 1];
+        for (int i = 1; i <= n; i++)
+            a[i] = sc.nextInt();
+        int[] numAppearTimes = new int[100000];
+        int res = 0;
+        if (k >= n){
+            for (int i = 1; i <= n; i++)
+                numAppearTimes[a[i]]++;
+            for (int i = 1; i <= n; i++) {
+                if(numAppearTimes[a[i]] >= t) {
+                    System.out.println(1);
+                    return;
+                }
+            }
+            System.out.println(0);
+        }else {
+            //int[] count = new int[n - k + 1 + 1];
+            for (int j = 1; j <= k; j++)
+                numAppearTimes[a[j]]++;
+            for (int i = 1; i <= n - k; i++) {
+                for (int j = i; j <= i + k - 1; j++) {
+                    if (a[j] == a[j + 1] && j < i + k -1)
+                        continue;
+                    if (numAppearTimes[a[j]] >= t)
+                        res++;//count[i]++;
+                }
+                numAppearTimes[a[i + k]]++;
+                numAppearTimes[a[i]]--;
+            }
+            System.out.println(res);
+        }
+    }
+}
 
 /*class Main{
     public static void main(String[] args){
