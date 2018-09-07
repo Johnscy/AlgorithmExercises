@@ -775,6 +775,75 @@ class Main {
 
     }*/
 
+/*class Main{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int N = sc.nextInt();sc.nextLine();
+        int[] a = new int[N + 1];
+        for(int i = 1;i <= N;++i){
+            a[i] = sc.nextInt();sc.nextLine();
+        }
+        int res = 0;
+
+
+    }
+}*/
+
+//输入：
+//1,1
+//0,0,0,2,2,2,2,0
+//输出：
+//yes,0
+//
+//输入：
+//2,2
+//0,0,0,2,2,2,2,0
+//输出：
+//yes,0
+//
+//输入：
+//3,0
+//0,0,0,2,2,2,2,0
+//输出：
+//no,1
+//
+//输入：
+//3,4
+//0,0,0,2,2,2,2,0
+//输出：
+//no,2
+//class Main{
+//    public static void main(String[] args){
+//        Scanner sc = new Scanner(System.in);
+//        String[] s1 = sc.nextLine().split(",");
+//        int x = Integer.valueOf(s1[0]), y = Integer.valueOf(s1[1]);
+//        String[] s2 = sc.nextLine().split(",");
+//        int n = s2.length / 2;
+//        int[][] points = new int[n][2];
+//        for (int i = 0; i < s2.length; i += 2) {
+//            points[i/2][0] = Integer.valueOf(s2[i]);
+//            points[i/2][1] = Integer.valueOf(s2[i + 1]);
+//        }
+//        int res = 0;
+//        int yesOrNo = check(n,points,x,y);
+//        if (yesOrNo == 1)
+//            System.out.print("yes" + "," + res);
+//        else {
+//            System.out.print("no" + "," + res);
+//        }
+//
+//    }
+//
+//    private static int check(int n,int[][] points,int x,int y){
+//        int c = 1;
+//        for (int i = 0 , j = n - 1; i < n; j = i++) {
+//            if (((points[i][1] > y) != (points[j][1] > y)) &&
+//                    (x < (points[j][0] - points[i][0]) * (y - points[i][1]) / (points[j][1] - points[i][1]) + points[i][0]))
+//                    c = ~c;
+//        }
+//        return c;
+//    }
+//}
 
 
 
