@@ -775,7 +775,7 @@ class Main {
 
     }*/
 
-class Main {
+/*class Main {
     //5 3 2
     //3 1 1 1 2
     //out: 3
@@ -817,7 +817,7 @@ class Main {
             System.out.println(res);
         }
     }
-}
+}*/
 
 /*class Main{
     public static void main(String[] args){
