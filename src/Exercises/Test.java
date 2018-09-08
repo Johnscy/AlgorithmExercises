@@ -889,6 +889,172 @@ class Main {
 //    }
 //}
 
+//1
+/*class Main{
+    private static int maxLen, lo;     //最长回文子串的长度和起始索引
+    public static int longestPalindrome(String s) {
+        int len = s.length();
+        if (len <= 1)
+            return 0;
+        for (int i = 0;i+1 < len;i++){
+            extendPalindrome(s,i,i);        //奇数长度
+            extendPalindrome(s,i,i + 1); //偶数长度
+        }
+        return maxLen;
+    }
+    private static void extendPalindrome(String s, int i, int j){
+        while (i >= 0 && j < s.length() && s.charAt(i) == s.charAt(j)){
+            i--;
+            j++;
+        }
+        if (maxLen < j - i + 1){
+            lo = i + 1;
+            maxLen = j - i + 1;
+        }
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String input = sc.nextLine();
+        int res = longestPalindrome(input);
+        System.out.print(res);
+    }
+}*/
+
+//2
+//class Main{
+//    public static void main(String[] args) {
+//        Scanner sc = new Scanner(System.in);
+//        int t = sc.nextInt();sc.nextLine();
+//        for (int i = 0; i < t; i++) {
+//            int n = sc.nextInt();
+//            int k = sc.nextInt();
+//            if (n == k)
+//                System.out.println(0 + " " + 0);
+//            else if(k == 0)
+//                System.out.println(0 + " " + 0);
+//            else if (n - k <= k - 1)
+//                System.out.println(0 + " " + (n - k));
+//            else
+//                System.out.println(0 + " " + (k - 1));
+//        }
+//    }
+//}
+
+//3
+//class Main{
+//    public static void main(String[] args) {
+//        Scanner sc = new Scanner(System.in);
+//        int n = sc.nextInt();
+//        int m = sc.nextInt();
+//        int[][] input = new int[n][2];
+//        for (int i = 0; i < n; i++) {
+//            input[i][0] = sc.nextInt();
+//            input[i][1] = sc.nextInt();
+//        }
+//        int res = 0;
+//        int[] voteTo = new int[m];
+//        for (int i = 0; i < n; i++)
+//            voteTo[input[i][0]]++;
+//        int max = Integer.MIN_VALUE;
+//        int maxIndex = 0;
+//        for (int i = 0; i < m; i++) {
+//            max = Math.max(voteTo[i], max);
+//            maxIndex =
+//        }
+//        Arrays.sort(input,(s1,s2) -> (s1));
+//        for (int i = 0; i < n; i++) {
+//            if (input[i][0] != ma)
+//            for (int j = 0; j < ; j++) {
+//
+//            }
+//        }
+//    }
+//}
+
+//class Main {
+//    public static void main(String[] args) {
+//        Scanner sc = new Scanner(System.in);
+//        int T = sc.nextInt();sc.nextLine();
+//        for (int i = 0; i < T; i++) {
+//            String input = sc.nextLine();
+//            StringBuffer sb = new StringBuffer(input);
+//            String out = abbreviation(sb);
+//            if (i < T - 1)
+//                System.out.println(out);
+//            else
+//                System.out.print(out);
+//        }
+//    }
+//
+//    private static String abbreviation(StringBuffer s){
+//        int n = s.length();
+//        if (n <= 3)    return new String(s);
+//        StringBuffer str = new StringBuffer(s);
+//        int continuousLen = 1;
+//        for (int i = n - 2, j = n - 1; i >= 0 && j >= 1; i--, j--) {
+//            if (s.charAt(j) - s.charAt(i) == 1)
+//                continuousLen++;
+//            else if (continuousLen >= 4){
+//                int k = i + continuousLen - 1;
+//                continuousLen -= 3;
+//                str.setCharAt(k--,'-');
+//                while (continuousLen-- > 0) {
+//                    str.deleteCharAt(k--);
+//                }
+//                continuousLen = 1;
+//            }else
+//                continuousLen = 1;
+//            if ((i == 0) && (j == 1) && continuousLen >= 4){
+//                int k = i + continuousLen - 2;
+//                continuousLen -= 3;
+//                str.setCharAt(k--,'-');
+//                while (continuousLen-- > 0) {
+//                    str.deleteCharAt(k--);
+//                }
+//            }
+//        }
+//        return new String(str);
+//    }
+//}
+
+//class Main {
+//    public static void main(String[] args) {
+//        Scanner sc = new Scanner(System.in);
+//        int T = sc.nextInt();sc.nextLine();
+//        for (int i = 0; i < T; i++) {
+//            int x = sc.nextInt();
+//            int y = sc.nextInt();
+//            String str = sc.next();
+//            sc.nextLine();
+//            int n = str.length();
+//            int equalRight = 0;
+//            for (int j = n - 1; j > 0; j--) {
+//                int k = n - 1 - j;
+//                if (str.charAt(j) >= 'A' && str.charAt(j) <= 'F')
+//                    equalRight += (str.charAt(j) - 'A' + 10) * bit(y,k);
+//                else
+//                    equalRight += (str.charAt(j) - '0') * bit(y,k);
+//                int equalLeft = 0;
+//                for (int l = j - 1; l >= 0; l--) {
+//                    int m = j - 1 - l;
+//                    if (str.charAt(j) >= 'A' && str.charAt(j) <= 'F')
+//                        equalLeft += (str.charAt(j) - 'A' + 10) * bit(y,m);
+//                    else
+//                        equalLeft += (str.charAt(j) - '0') * bit(y,m);
+//                }
+//                if (equalLeft == equalRight)
+//                    System.out.print(equalLeft);
+//            }
+//        }
+//    }
+//    private static int bit(int base, int k){
+//        int res = 1;
+//        if ((k & 1) == 1)
+//            res  *= base;   //累乘
+//        base *= base;   //底数的平方
+//        k >>= 1; //指数右移一位
+//    }
+//}
 
 
 
