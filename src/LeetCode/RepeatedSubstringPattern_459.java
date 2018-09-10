@@ -37,4 +37,12 @@ public class RepeatedSubstringPattern_459 {
             }
         }
     }
+
+    //魔鬼啊！
+    class Solution_Amazing {
+        public boolean repeatedSubstringPattern(String s) {
+            String str = s + s;
+            return str.substring(1,str.length() - 1).contains(s);
+        }
+    }
 }
