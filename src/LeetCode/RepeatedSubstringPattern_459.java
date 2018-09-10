@@ -1,5 +1,7 @@
 package LeetCode;
 
+import java.util.HashMap;
+
 /**
  * Given a non-empty string check if it can be constructed by taking a substring of it
  * and appending multiple copies of the substring together.
@@ -24,7 +26,15 @@ public class RepeatedSubstringPattern_459 {
         public boolean repeatedSubstringPattern(String s) {
             if (s == null || s.length() <= 1)
                 return false;
-
+            HashMap<Character,Integer> map = new HashMap<>();
+            char[] chars = s.toCharArray();
+            int substringLen = 0;
+            for (int i = 0; i < chars.length; i++) {
+                if (!map.containsKey(chars[i]))
+                    map.put(chars[i],1);
+                else
+                    map.put(chars[i],map.get(chars[i]) + 1);
+            }
         }
     }
 }
