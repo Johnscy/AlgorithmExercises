@@ -124,6 +124,35 @@ public class RepeatedSubstringPattern_459 {
         }
     }
 
+    //鬼才= =
+    class Solution {
+        public boolean repeatedSubstringPattern(String s) {
+            if(s.length()==0 || s.length()==1){
+                return false;
+            }
+            int len = s.length();
+            int mid = len / 2;
+            if(s.substring(0,mid).equals(s.substring(mid))){
+                return true;
+            }
+            int one3 = len / 3;
+            String one_third = s.substring(0,one3);
+            if(one_third.equals(s.substring(one3,one3*2)) && one_third.equals(s.substring(one3*2))){
+                return true;
+            }
+
+            if(len % 2==1){ //除了分成2份和3份，其他的长度必须所有字母一样
+                for(int i = 1;i < len;i++){
+                    if(s.charAt(0) != s.charAt(i)){
+                        return false;
+                    }
+                }
+                return true;
+            }
+            return false;
+        }
+    }
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String input = sc.nextLine();
