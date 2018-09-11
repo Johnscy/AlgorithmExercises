@@ -127,9 +127,7 @@ public class RepeatedSubstringPattern_459 {
     //鬼才= =
     class Solution {
         public boolean repeatedSubstringPattern(String s) {
-            if(s.length()==0 || s.length()==1){
-                return false;
-            }
+            if (s == null || s.length() <= 1)  return false;
             int len = s.length();
             int mid = len / 2;
             if(s.substring(0,mid).equals(s.substring(mid))){
@@ -141,7 +139,7 @@ public class RepeatedSubstringPattern_459 {
                 return true;
             }
 
-            if(len % 2==1){ //除了分成2份和3份，其他的长度必须所有字母一样
+            if(len % 2 == 1){ //除了分成2份和3份，其他的长度必须所有字母一样
                 for(int i = 1;i < len;i++){
                     if(s.charAt(0) != s.charAt(i)){
                         return false;
