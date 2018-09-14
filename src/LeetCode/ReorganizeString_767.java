@@ -69,7 +69,6 @@ public class ReorganizeString_767 {
             if (S.length() - max < max - 1)
                 return "";
             else{
-                //Arrays.sort(counts);    //对计数数组排下序
                 char[] sb = new char[S.length()];
                 int k = 0;
                 while (counts[maxIndex]-- > 0){
