@@ -27,6 +27,6 @@ public class Rank {
             else
                 break;
         }
-        System.out.print(index);
+        System.out.println(index);
     }
 }
