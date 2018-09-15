@@ -1344,5 +1344,124 @@ class Main {
 
 
 
+//class Main {
+//    public static void main(String[] args) {
+//        Scanner sc = new Scanner(System.in);
+//        int k = sc.nextInt();
+//        int n = sc.nextInt();sc.nextLine();
+//        int[][] matrix = new int[n][n];
+//        for (int i = 0; i < n; i++) {
+//            for (int j = 0; j < n; j++)
+//                matrix[i][j] = sc.nextInt();
+//            sc.nextLine();
+//        }
+//        if (n == 1 && k == 1) {
+//            System.out.println(matrix[0][0]);
+//        }
+//        System.out.println(kthSmallest(matrix,k));
+//    }
+//    public static boolean guess(int[][] matrix, int g, int n, int k){
+//        int sum = 0;
+//        for(int i = 0; i < n; i++){
+//            int L = 0;
+//            int R = n - 1;
+//            int ans = 0;
+//            while (L <= R){
+//                int mid = L + (R - L)/2;
+//                //若某一行值小于g，则应该是最后一个元素的下标 + 1.
+//                if(matrix[i][mid] < g){
+//                    ans = mid + 1;
+//                    L = mid + 1;
+//                }else {
+//                    R = mid - 1;
+//                }
+//            }
+//            sum += ans;
+//        }
+//        return k > sum;
+//    }
+//
+//    public static int kthSmallest(int[][] matrix, int k) {
+//        int n = matrix.length;
+//        int L = matrix[0][0];
+//        int R = matrix[n - 1][n - 1];
+//        int ans = 0;
+//        while (L <= R){
+//            int mid = L + (R - L )/2;
+//            if(guess(matrix, mid, n, k)){
+//                ans = mid;
+//                L = mid + 1;
+//            }else {
+//                R = mid - 1;
+//            }
+//        }
+//        return  ans;
+//    }
+//}
+
+/*class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String[] input = sc.nextLine().split(" ");
+//        int sum = input[0].length() + input[1].length();
+//        int longLen = input[0].length() > input[1].length() ? input[0].length() : input[1].length();
+//        int shortLen = sum - longLen;
+//        char[] a = new char[longLen];
+//        char[] b = new char[longLen];
+//        char[] a = input[0].toCharArray();
+//        char[] b = input[1].toCharArray();
+//        String res = "";
+//        int i , j;
+//        for (i = a.length - 1, j = b.length - 1; i >=0 && j >= 0; i--, j--) {
+//            int jw = (a[i] - '0') & (b[j] - '0');
+//            int bitsum = (a[i] - '0') ^ (b[j] - '0') + jw << 1;
+//            res = bitsum + res;
+//        }
+//        if (i != 0 && j == 0)
+//            res = new String(a).substring(0,i + 2) + res;
+//        else if (i == 0 && j != 0)
+//            res = new String(b).substring(0 , j + 2) + res;
+//        System.out.println(res);
+            String num1 = input[0];
+            String num2 = input[1];
+        System.out.println(addBinary(num1,num2));
+        }
+    public static String addBinary(String a, String b) {
+        int i = a.length() - 1;
+        int j = b.length() - 1;
+        int da = 0;
+        int db = 0;
+        int adv = 0;
+        StringBuffer result = new StringBuffer();
+        while (i >= 0 && j >= 0) {
+            da = a.charAt(i--) == '0' ? 0 : 1;
+            db = b.charAt(j--) == '0' ? 0 : 1;
+            int d = da + db + adv;
+            result.append(d % 2 == 0 ? '0' : '1');
+            adv = d >> 1;
+        }
+        if (i >= 0) {
+            while (i >= 0) {
+                da = a.charAt(i--) == '0' ? 0 : 1;
+                int d = da + adv;
+                result.append(d % 2 == 0 ? '0' : '1');
+                adv = d >> 1;
+            }
+        } else if (j >= 0) {
+            while (j >= 0) {
+                db = b.charAt(j--) == '0' ? 0 : 1;
+                int d = db + adv;
+                result.append(d % 2 == 0 ? '0' : '1');
+                adv = d >> 1;
+            }
+        }
+        if (adv == 1) {
+            result.append('1');
+        }
+        return result.reverse().toString();
+    }
+}*/
+
+
 
 
