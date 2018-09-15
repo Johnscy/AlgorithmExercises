@@ -53,7 +53,7 @@ public class ReorganizeString_767 {
         }
     }
 
-    //
+    //数组计数
     class Solution_BucketSort {
         public String reorganizeString(String S) {
             if (S == null || S.length() <= 1)
