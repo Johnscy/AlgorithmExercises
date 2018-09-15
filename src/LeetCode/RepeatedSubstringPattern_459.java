@@ -26,15 +26,7 @@ public class RepeatedSubstringPattern_459 {
         public boolean repeatedSubstringPattern(String s) {
             if (s == null || s.length() <= 1)
                 return false;
-            HashMap<Character,Integer> map = new HashMap<>();
-            char[] chars = s.toCharArray();
-            int substringLen = 0;
-            for (int i = 0; i < chars.length; i++) {
-                if (!map.containsKey(chars[i]))
-                    map.put(chars[i],1);
-                else
-                    map.put(chars[i],map.get(chars[i]) + 1);
-            }
+
         }
     }
 
