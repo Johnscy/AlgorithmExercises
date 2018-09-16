@@ -1462,6 +1462,117 @@ class Main {
     }
 }*/
 
+//import java.util.*;
+//class Main {
+//    public static void main(String[] args) {
+//        Scanner sc = new Scanner(System.in);
+//        int x = sc.nextInt();
+//        int y = sc.nextInt();
+//        int res = check(x,y);
+//        System.out.print(res);
+//    }
+//
+//    private static int check(int x,int y){
+//        int sum = x * (x - 1) / 2;
+//        if (sum == y)
+//            return 1;
+//        else if (sum > y){
+//            if (x % 2 == 0) {
+//                if (((sum - x / 2) / x > (x - 1) / 2) || y < x / 2)
+//                    return -1;
+//                else
+//                    return 2;
+//            }else {
+//                 if (((sum - x) / x > (x - 1) / 2 - 1) || y < x / 2)
+//                     return -1;
+//                 else
+//                     return 2;
+//            }
+//        }else {
+//            if (y - sum > x)
+//                return 1;
+//            else
+//                return -1;
+//        }
+//    }
+//}
 
+//class Main {
+//    public static void main(String[] args) {
+//        Scanner sc = new Scanner(System.in);
+//        int n = sc.nextInt();
+//        if(n <= 2) {
+//            System.out.print(n);
+//            return;
+//        }
+//        int fn = 0;
+//        int fib1 = 1, fib2 = 2;
+//        for (int i = 3;i <= n;i++){
+//            fn = fib1 + fib2;
+//            fib1 = fib2;
+//            fib2 = fn;
+//        }
+//        System.out.print(fn);
+//    }
+//}
 
+//class Main {
+//    public static void main(String[] args) {
+//        Scanner sc = new Scanner(System.in);
+//        PriorityQueue<Integer> pq1 = new PriorityQueue<>();
+//        PriorityQueue<Integer> pq2 = new PriorityQueue<>();
+//        String[] s1 = sc.nextLine().split(" ");
+//        String[] s2 = sc.nextLine().split(" ");
+//        for (String s: s1)
+//            pq1.add(Integer.valueOf(s));
+//        for (String s: s2)
+//            pq2.add(Integer.valueOf(s));
+//        int res = 0;
+//        while(!pq2.isEmpty()){
+//            if (pq1.isEmpty())
+//                break;
+//            if (pq2.peek() >= pq1.peek()){
+//                res++;
+//                pq1.poll();
+//                pq2.poll();
+//            }else {
+//                pq2.poll();
+//            }
+//        }
+//        System.out.print(res);
+//    }
+//}
+
+//class Main {
+//    public static void main(String[] args) {
+//        Scanner sc = new Scanner(System.in);
+//        int N = sc.nextInt();
+//        int res = 0;
+//        for (int i = 1; i <= N; i++) {
+//            if (isGoodNumber(i))
+//                res++;
+//        }
+//        System.out.println(res);
+//    }
+//    private static boolean isGoodNumber(int k){
+//        String num = k+"";
+//        char[] c = num.toCharArray();
+//        for (int i = 0; i < num.length(); i++) {
+//            if (c[i] == '3' || c[i] == '4' || c[i] == '7')
+//                return false;
+//            else if (c[i] == '2')
+//                c[i] = '5';
+//            else if (c[i] == '5')
+//                c[i] = '2';
+//            else if (c[i] == '6')
+//                c[i] = '9';
+//            else if (c[i] == '9')
+//                c[i] = '6';
+//        }
+//        if (new String(c).equals(num))
+//            return false;
+//        else
+//            return true;
+//    }
+//}
 
