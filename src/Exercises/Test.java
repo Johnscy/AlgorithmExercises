@@ -1216,5 +1216,486 @@ class Main {
 //}
 
 
+//1
+//class Main {
+//    public static void main(String[] args) {
+//        Scanner sc = new Scanner(System.in);
+//        String input = sc.nextLine();
+//        char[] c = input.toCharArray();
+//        int num1 = 0, num2 = 0;
+//        int count = 0;
+//        for (int i = 0; i <= 2; i++) {
+//            num1 += c[i] - '0';
+//            num2 += c[i + 3] - '0';
+//        }
+//        int which = num2 - num1;
+//        PriorityQueue<Character> pq = new PriorityQueue<>();
+//        for (int i = 0; i <= 2; i++) {
+//            if (which < 0)
+//                pq.add(c[i + 3]);
+//            else
+//                pq.add(c[i]);
+//        }
+//        which = Math.abs(which);
+//        if (which == 0){
+//            System.out.print(count);
+//            return;
+//        }else if (which <= '9' - pq.peek()){
+//            count++;
+//            System.out.print(count);
+//            return;
+//        }else {
+//            while (which > 0) {
+//                    which -= Math.abs('9' - pq.poll());
+//                count++;
+//            }
+//            System.out.print(count);
+//        }
+//    }
+//}
 
+//class Main {
+//    public static void main(String[] args) {
+//        Scanner scan = new Scanner(System.in
+//
+//        );
+//        String str = scan.nextLine();
+//        int[] pre = new int[3];
+//        int[] back = new int[3];
+//        for(int i=0;i<3;i++) {
+//            pre[i] = (int)(str.charAt(i)-'0');
+//            back[i] = (int)(str.charAt(i+3)-'0');
+//        }
+//        boolean flag = false;//代表前面大于后面
+//        int sum1 = 0;
+//        for(int i = 0;i<3;i++) {
+//            sum1 = sum1+pre[i]-back[i];
+//        }
+//        if(sum1==0) {
+//            System.out.println(0);
+//            return ;
+//        }
+//        if(sum1<0) {
+//            flag = true;
+//            sum1 = - sum1;
+//        }
+//        boolean[] pp = new boolean[3];
+//        boolean[] ff = new boolean[3];
+//        int num = 0;
+//        if(flag==false) {
+//            for(int i =0;i<3;i++) {
+//                int temp = pre[i];
+//                pre[i] = back[i];
+//                back[i] = temp;
+//            }
+//        }
+//        while(sum1!=0) {//后面大于前面，前面+，后面减
+//            int max1 = 0;
+//            int index1 = 0;
+//            for(int i =0;i<3;i++) {
+//                if(!pp[i]&&max1<(9-pre[i])) {
+//                    max1 = 9-pre[i];
+//                    index1 = i;
+//                }
+//            }
+//            int max2 = 0;
+//            int index2 = 0;
+//            for(int i =0;i<3;i++) {
+//                if(!ff[i]&&max2<back[i]) {
+//                    max2 = back[i];
+//                    index2 = i;
+//                }
+//            }
+//            if(max1>max2) {
+//                if(sum1<=max1) {
+//                    num++;
+//                    break;
+//                }else {
+//                    sum1 -= max1;
+//                    num++;
+//                }
+//                pp[index1] = true;
+//            }else {
+//                if(sum1<=max2) {
+//                    num++;
+//                    break;
+//                }else {
+//                    num++;
+//                    sum1 -= max2;
+//                }
+//                ff[index2] = true;
+//            }
+//        }
+//        System.out.println(num);
+//    }
+//}
+
+//2
+//class Main {
+//    public static void main(String[] args) {
+//        Scanner sc = new Scanner(System.in);
+//        int N = sc.nextInt();
+//        int M = sc.nextInt();
+//        int P = sc.nextInt();sc.nextLine();
+//        int[] Ai = new int[N + 1];
+//        for (int i = 1; i <= N; i++)
+//            Ai[i] = sc.nextInt();
+//        sc.nextLine();
+//        for (int i = 0; i < M; i++) {
+//            String[] str = sc.nextLine().split(" ");
+//            if (str[0].equals("A"))
+//                Ai[Integer.valueOf(str[1])]++;
+//            else if (str[0].equals("B"))
+//                Ai[Integer.valueOf(str[1])]--;
+//        }
+//        int k = Ai[P];
+//        Arrays.sort(Ai);
+//        int index = 1;
+//        for (int i = N; i >= 1; i--) {
+//            if (Ai[i] != k)
+//                index++;
+//            else
+//                break;
+//        }
+//        System.out.print(index);
+//    }
+//}
+
+
+//class ListNode {
+//    int val;
+//    ListNode next;
+//    public ListNode(int val) {
+//        this.val = val;
+//    }
+//}
+//class Main {
+//    public static void main(String[] args) {
+//        Scanner sc = new Scanner(System.in);
+//        String[] strs = sc.nextLine().trim().split(" ");
+//        int n = strs.length;
+//        int[] arrs = new int[n];
+//        for(int i = 0;i < n;i++)
+//            arrs[i] = Integer.parseInt(strs[i]);
+//        ListNode head = new ListNode(arrs[0]);
+//        ListNode temp = head;
+//        for(int i =1;i<n;i++) {
+//            temp.next = new ListNode(arrs[i]);
+//            temp = temp.next;
+//        }
+//        int k = sc.nextInt();
+//        sc.nextLine();
+//        head = reverseKGroup(head, k);
+//        while(head!=null) {
+//            System.out.print(head.val+" ");
+//            head = head.next;
+//        }
+//    }
+//    public static  ListNode reverseKGroup(ListNode head, int k) {
+//        int n = 0;
+//        for (ListNode i = head; i != null; n++, i = i.next);
+//        ListNode pHead = new ListNode(0);
+//        pHead.next = head;
+//        ListNode pre = pHead;
+//        for (ListNode tail = head; n >= k; n -= k) {
+//            for (int i = 1; i < k; i++) {
+//                ListNode next = tail.next.next;
+//                tail.next.next = pre.next;
+//                pre.next = tail.next;
+//                tail.next = next;
+//            }
+//            pre = tail;
+//            tail = tail.next;
+//        }
+//        return pHead.next;
+//    }
+//
+//}
+
+//class Main {
+//    public static void main(String[] args) {
+//        Scanner sc = new Scanner(System.in);
+//        int n = sc.nextInt();
+//        int res = 0;
+//        if (n <= 0) {
+//            System.out.println(res);
+//            return;
+//        }
+//        int[] dp = new int[n + 1];
+//        for (int i = 5; i <= n; i++) {
+//            int temp = 0;
+//            int k = i;
+//            while (k != 0) {
+//                k /= 5;
+//                temp += k;
+//                dp[i] = dp[k / 5] + temp;
+//            }
+//        }
+//        for (int i = 1; i <= n; i++) {
+//            res += dp[i];
+//        }
+//        System.out.println(res);
+//    }
+//}
+
+//class Main {
+//    public static void main(String[] args) {
+//        Scanner sc = new Scanner(System.in);
+//        int n = sc.nextInt();sc.nextLine();
+//        int q = sc.nextInt();sc.nextLine();
+//        if(n <= 1 || q < 1){
+//            System.out.println(1);
+//            return;
+//        }
+//        boolean[][] matrix = new boolean[n + 1][n + 1];
+//        for (int i = 0; i < q; i++) {
+//            int child = sc.nextInt();
+//            int without = sc.nextInt();
+//            matrix[child][without] = true;
+//        }
+//        for (int i = 1; i <= n; i++)
+//            for (int j = i+1; j <= n ; j++)
+//                if(matrix[i][j] )
+//                    for (int k = j+1; k <= n; k++)
+//                        if(matrix[i][k] && matrix[j][k]){
+//                            System.out.println(0);
+//                            return;
+//                        }
+//        System.out.println(1);
+//    }
+//}
+
+
+
+//class Main {
+//    public static void main(String[] args) {
+//        Scanner sc = new Scanner(System.in);
+//        int k = sc.nextInt();
+//        int n = sc.nextInt();sc.nextLine();
+//        int[][] matrix = new int[n][n];
+//        for (int i = 0; i < n; i++) {
+//            for (int j = 0; j < n; j++)
+//                matrix[i][j] = sc.nextInt();
+//            sc.nextLine();
+//        }
+//        if (n == 1 && k == 1) {
+//            System.out.println(matrix[0][0]);
+//        }
+//        System.out.println(kthSmallest(matrix,k));
+//    }
+//    public static boolean guess(int[][] matrix, int g, int n, int k){
+//        int sum = 0;
+//        for(int i = 0; i < n; i++){
+//            int L = 0;
+//            int R = n - 1;
+//            int ans = 0;
+//            while (L <= R){
+//                int mid = L + (R - L)/2;
+//                //若某一行值小于g，则应该是最后一个元素的下标 + 1.
+//                if(matrix[i][mid] < g){
+//                    ans = mid + 1;
+//                    L = mid + 1;
+//                }else {
+//                    R = mid - 1;
+//                }
+//            }
+//            sum += ans;
+//        }
+//        return k > sum;
+//    }
+//
+//    public static int kthSmallest(int[][] matrix, int k) {
+//        int n = matrix.length;
+//        int L = matrix[0][0];
+//        int R = matrix[n - 1][n - 1];
+//        int ans = 0;
+//        while (L <= R){
+//            int mid = L + (R - L )/2;
+//            if(guess(matrix, mid, n, k)){
+//                ans = mid;
+//                L = mid + 1;
+//            }else {
+//                R = mid - 1;
+//            }
+//        }
+//        return  ans;
+//    }
+//}
+
+/*class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String[] input = sc.nextLine().split(" ");
+//        int sum = input[0].length() + input[1].length();
+//        int longLen = input[0].length() > input[1].length() ? input[0].length() : input[1].length();
+//        int shortLen = sum - longLen;
+//        char[] a = new char[longLen];
+//        char[] b = new char[longLen];
+//        char[] a = input[0].toCharArray();
+//        char[] b = input[1].toCharArray();
+//        String res = "";
+//        int i , j;
+//        for (i = a.length - 1, j = b.length - 1; i >=0 && j >= 0; i--, j--) {
+//            int jw = (a[i] - '0') & (b[j] - '0');
+//            int bitsum = (a[i] - '0') ^ (b[j] - '0') + jw << 1;
+//            res = bitsum + res;
+//        }
+//        if (i != 0 && j == 0)
+//            res = new String(a).substring(0,i + 2) + res;
+//        else if (i == 0 && j != 0)
+//            res = new String(b).substring(0 , j + 2) + res;
+//        System.out.println(res);
+            String num1 = input[0];
+            String num2 = input[1];
+        System.out.println(addBinary(num1,num2));
+        }
+    public static String addBinary(String a, String b) {
+        int i = a.length() - 1;
+        int j = b.length() - 1;
+        int da = 0;
+        int db = 0;
+        int adv = 0;
+        StringBuffer result = new StringBuffer();
+        while (i >= 0 && j >= 0) {
+            da = a.charAt(i--) == '0' ? 0 : 1;
+            db = b.charAt(j--) == '0' ? 0 : 1;
+            int d = da + db + adv;
+            result.append(d % 2 == 0 ? '0' : '1');
+            adv = d >> 1;
+        }
+        if (i >= 0) {
+            while (i >= 0) {
+                da = a.charAt(i--) == '0' ? 0 : 1;
+                int d = da + adv;
+                result.append(d % 2 == 0 ? '0' : '1');
+                adv = d >> 1;
+            }
+        } else if (j >= 0) {
+            while (j >= 0) {
+                db = b.charAt(j--) == '0' ? 0 : 1;
+                int d = db + adv;
+                result.append(d % 2 == 0 ? '0' : '1');
+                adv = d >> 1;
+            }
+        }
+        if (adv == 1) {
+            result.append('1');
+        }
+        return result.reverse().toString();
+    }
+}*/
+
+//import java.util.*;
+//class Main {
+//    public static void main(String[] args) {
+//        Scanner sc = new Scanner(System.in);
+//        int x = sc.nextInt();
+//        int y = sc.nextInt();
+//        int res = check(x,y);
+//        System.out.print(res);
+//    }
+//
+//    private static int check(int x,int y){
+//        int sum = x * (x - 1) / 2;
+//        if (sum == y)
+//            return 1;
+//        else if (sum > y){
+//            if (x % 2 == 0) {
+//                if (((sum - x / 2) / x > (x - 1) / 2) || y < x / 2)
+//                    return -1;
+//                else
+//                    return 2;
+//            }else {
+//                 if (((sum - x) / x > (x - 1) / 2 - 1) || y < x / 2)
+//                     return -1;
+//                 else
+//                     return 2;
+//            }
+//        }else {
+//            if (y - sum > x)
+//                return 1;
+//            else
+//                return -1;
+//        }
+//    }
+//}
+
+//class Main {
+//    public static void main(String[] args) {
+//        Scanner sc = new Scanner(System.in);
+//        int n = sc.nextInt();
+//        if(n <= 2) {
+//            System.out.print(n);
+//            return;
+//        }
+//        int fn = 0;
+//        int fib1 = 1, fib2 = 2;
+//        for (int i = 3;i <= n;i++){
+//            fn = fib1 + fib2;
+//            fib1 = fib2;
+//            fib2 = fn;
+//        }
+//        System.out.print(fn);
+//    }
+//}
+
+//class Main {
+//    public static void main(String[] args) {
+//        Scanner sc = new Scanner(System.in);
+//        PriorityQueue<Integer> pq1 = new PriorityQueue<>();
+//        PriorityQueue<Integer> pq2 = new PriorityQueue<>();
+//        String[] s1 = sc.nextLine().split(" ");
+//        String[] s2 = sc.nextLine().split(" ");
+//        for (String s: s1)
+//            pq1.add(Integer.valueOf(s));
+//        for (String s: s2)
+//            pq2.add(Integer.valueOf(s));
+//        int res = 0;
+//        while(!pq2.isEmpty()){
+//            if (pq1.isEmpty())
+//                break;
+//            if (pq2.peek() >= pq1.peek()){
+//                res++;
+//                pq1.poll();
+//                pq2.poll();
+//            }else {
+//                pq2.poll();
+//            }
+//        }
+//        System.out.print(res);
+//    }
+//}
+
+//class Main {
+//    public static void main(String[] args) {
+//        Scanner sc = new Scanner(System.in);
+//        int N = sc.nextInt();
+//        int res = 0;
+//        for (int i = 1; i <= N; i++) {
+//            if (isGoodNumber(i))
+//                res++;
+//        }
+//        System.out.println(res);
+//    }
+//    private static boolean isGoodNumber(int k){
+//        String num = k+"";
+//        char[] c = num.toCharArray();
+//        for (int i = 0; i < num.length(); i++) {
+//            if (c[i] == '3' || c[i] == '4' || c[i] == '7')
+//                return false;
+//            else if (c[i] == '2')
+//                c[i] = '5';
+//            else if (c[i] == '5')
+//                c[i] = '2';
+//            else if (c[i] == '6')
+//                c[i] = '9';
+//            else if (c[i] == '9')
+//                c[i] = '6';
+//        }
+//        if (new String(c).equals(num))
+//            return false;
+//        else
+//            return true;
+//    }
+//}
 
