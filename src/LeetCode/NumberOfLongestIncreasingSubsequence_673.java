@@ -31,7 +31,7 @@ public class NumberOfLongestIncreasingSubsequence_673 {
             Arrays.fill(dp,1);
             for (int i = 0; i < n; i++) {
                 int cnt = 1;
-                for (int j = 0; j < i; j++) {
+                for (int j = 0; j < i; j++)
                     if (nums[i] > nums[j]) {
                         if (1 + dp[j] > dp[i]) {
                             cnt = count[j];
@@ -40,9 +40,7 @@ public class NumberOfLongestIncreasingSubsequence_673 {
                             cnt += count[j];
                         }
                     }
-                }
                 count[i] = cnt;
-
                 if (dp[i] > max) {
                     res = cnt;
                     max = dp[i];
