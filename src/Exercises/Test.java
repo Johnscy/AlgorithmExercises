@@ -1699,42 +1699,60 @@ class Main {
 //    }
 //}
 
+//class Main {
+//    public static void main(String[] args) {
+//        Scanner sc = new Scanner(System.in);
+//        List<String> list = new LinkedList<>();
+//        Map<Integer,Integer> map = new HashMap<>();
+//        List<Integer> numList = new LinkedList<>();
+//        while (sc.hasNext()) {
+//            String input = sc.nextLine();
+//            if (input.equals("END"))
+//                break;
+//            list.add(input);
+//            String[] str = input.split("#");
+//            int n = Integer.valueOf(str[0]);
+//            char[] numstr = str[1].toCharArray();
+//            int num = 0;
+//            for (int i = numstr.length - 1, k = 1; i >= 0; i-- ,k *= n) {
+//                num += (numstr[i] - '0') * k;
+//            }
+//            numList.add(num);
+//            if (!map.containsKey(num))
+//                map.put(num,1);
+//            else
+//                map.put(num,map.get(num) + 1);
+//        }
+//        int index = -1;
+//        for (int num : numList) {
+//            index++;
+//            if (map.get(num) > 1) {
+//                list.add( index + 1, "$");
+//                list.remove(index);
+//            }
+//        }
+//        int count = list.size();
+//        if (count > 0)
+//            for (String s : list) {
+//                if (!s.equals("$"))
+//                    System.out.println(s);
+//                else
+//                    count--;
+//            }
+//        if (count == 0)
+//            System.out.println("None");
+//    }
+//}
+
 class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        List<String> list = new LinkedList<>();
-        Map<Integer,Integer> map = new HashMap<>();
-        Hashtable<Integer,Map<Integer,Integer>> table = new Hashtable<>();
-        //List<Integer> numList = new LinkedList<>();
-        while (sc.hasNext()) {
-            if (sc.nextLine().equals("END"))
-                break;
-            String input = sc.nextLine();
-            list.add(input);
-            String[] str = input.split("#");
-            int n = Integer.valueOf(str[0]);
-            char[] numstr = str[1].toCharArray();
-            int num = 0;
-            for (int i = numstr.length - 1, k = 1; i >= 0; i-- ,k *= n) {
-                num += (numstr[i] - '0') * k;
-                if (!map.containsKey(num)) {
-                    map.put(num,1);
-                    table.put(i, map);
-                }
-                else {
-                    map.put(i,map.get(i) + 1);
-                    table.put(num,map);
-                }
-            }
-            //Map.Entry<Integer,Integer> entry =
-            for (Map.Entry<Integer,Integer> entry : table.entrySet()) {
-                if (entry.getValue() == 1)
-                    list.get();
+        int n = sc.nextInt();
+        int[] height = new int[n];
+        for (int i = 0; i < ; i++)
+            height[i] = sc.nextInt();
+        int m = sc.nextInt();
 
-                System.out.println("None");
-            }
-            System.out.println("None");
-        }
     }
 }
 
