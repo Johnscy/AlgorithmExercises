@@ -1699,3 +1699,43 @@ class Main {
 //    }
 //}
 
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        List<String> list = new LinkedList<>();
+        Map<Integer,Integer> map = new HashMap<>();
+        Hashtable<Integer,Map<Integer,Integer>> table = new Hashtable<>();
+        //List<Integer> numList = new LinkedList<>();
+        while (sc.hasNext()) {
+            if (sc.nextLine().equals("END"))
+                break;
+            String input = sc.nextLine();
+            list.add(input);
+            String[] str = input.split("#");
+            int n = Integer.valueOf(str[0]);
+            char[] numstr = str[1].toCharArray();
+            int num = 0;
+            for (int i = numstr.length - 1, k = 1; i >= 0; i-- ,k *= n) {
+                num += (numstr[i] - '0') * k;
+                if (!map.containsKey(num)) {
+                    map.put(num,1);
+                    table.put(i, map);
+                }
+                else {
+                    map.put(i,map.get(i) + 1);
+                    table.put(num,map);
+                }
+            }
+            //Map.Entry<Integer,Integer> entry =
+            for (Map.Entry<Integer,Integer> entry : table.entrySet()) {
+                if (entry.getValue() == 1)
+                    list.get();
+
+                System.out.println("None");
+            }
+            System.out.println("None");
+        }
+    }
+}
+
+
