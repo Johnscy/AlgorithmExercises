@@ -1,7 +1,5 @@
 package LeetCode;
 
-import edu.princeton.cs.algs4.In;
-
 /**
  * Given an integer matrix, find the length of the longest increasing path.
  * From each cell, you can either move to four directions: left, right, up or down.
