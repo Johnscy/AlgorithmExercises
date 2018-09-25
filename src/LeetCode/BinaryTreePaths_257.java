@@ -28,12 +28,12 @@ public class BinaryTreePaths_257 {
     class Solution {
         public List<String> binaryTreePaths(TreeNode root) {
             List<String> paths = new LinkedList<>();
-            Stack<TreeNode> treeNodes = new LinkedList<>();
+            Stack<TreeNode> treeNodes = new Stack<>();
             if (root == null)
                 return paths;
-            treeNodes.add(root);
+            treeNodes.push(root);
             while (!treeNodes.isEmpty()){
-
+c
             }
         }
     }
