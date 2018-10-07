@@ -82,18 +82,18 @@ public class BinaryTreePaths_257 {
                 return paths;
             treeNodes.push(root);
             pathStr.push("");
-//            while (!treeNodes.isEmpty()){
-//                TreeNode curNode = treeNodes.pop();
-//                String preStr = pathStr.pop();
-//                if (root != null){
-//                    preStr += curNode.val + "->";
-//                    curNode = curNode.left;
-//                    treeNodes.push(curNode);
-//                    pathStr.push(preStr);
-//                }
-//                paths.add(preStr + curNode.val);
-//            }
             /*while (!treeNodes.isEmpty()){
+                TreeNode curNode = treeNodes.pop();
+                String preStr = pathStr.pop();
+                while (curNode.left != null || curNode.right != null){
+                    preStr += curNode.val + "->";
+                    curNode = curNode.left;
+                    treeNodes.push(curNode);
+                    pathStr.push(preStr);
+                }
+                paths.add(preStr + curNode.val);
+            }*/
+            while (!treeNodes.isEmpty()){
                 TreeNode curNode = treeNodes.pop();
                 String preStr = pathStr.pop();
                 if (curNode.left == null && curNode.right == null)
@@ -106,7 +106,7 @@ public class BinaryTreePaths_257 {
                     treeNodes.push(curNode.right);
                     pathStr.push(preStr + curNode.val + "->");
                 }
-            }*/
+            }
             return paths;
         }
     }
