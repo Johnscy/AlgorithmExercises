@@ -25,16 +25,89 @@ public class BinaryTreePaths_257 {
         TreeNode(int x) { val = x; }
     }
 
-    class Solution {
+    //Recursion
+    class Solution_Recursion {
+        public List<String> binaryTreePaths(TreeNode root) {
+            List<String> paths = new LinkedList<>();
+            if (root != null){
+                searchPath(root,"",paths);
+            }
+            return paths;
+        }
+        private void searchPath(TreeNode root, String pathStr, List<String> paths){
+            if (root.left == null && root.right == null)
+                paths.add(pathStr + root.val);
+            if (root.left != null)
+                searchPath(root.left,pathStr + root.val + "->",paths);
+            if (root.right != null)
+                searchPath(root.right,pathStr + root.val + "->",paths);
+        }
+    }
+
+    //BFS + Queue
+    class Solution_BFS {
+        public List<String> binaryTreePaths(TreeNode root) {
+            List<String> paths = new LinkedList<>();
+            Queue<TreeNode> treeNodes = new LinkedList<>();
+            Queue<String> pathStr = new LinkedList<>();
+            if (root == null)
+                return paths;
+            treeNodes.add(root);
+            pathStr.add("");
+            while (!treeNodes.isEmpty()){
+                TreeNode curNode = treeNodes.poll();
+                String preStr = pathStr.poll();
+                if (curNode.left == null && curNode.right == null)
+                    paths.add(preStr + curNode.val);
+                if (curNode.left != null){
+                    treeNodes.add(curNode.left);
+                    pathStr.add(preStr + curNode.val + "->");
+                }
+                if (curNode.right != null){
+                    treeNodes.add(curNode.right);
+                    pathStr.add(preStr + curNode.val + "->");
+                }
+            }
+            return paths;
+        }
+    }
+
+    //DFS,Stack
+    class Solution_DFS {
         public List<String> binaryTreePaths(TreeNode root) {
             List<String> paths = new LinkedList<>();
             Stack<TreeNode> treeNodes = new Stack<>();
+            Stack<String> pathStr = new Stack<>();
             if (root == null)
                 return paths;
             treeNodes.push(root);
+            pathStr.push("");
             while (!treeNodes.isEmpty()){
-c
+                TreeNode curNode = treeNodes.pop();
+                String preStr = pathStr.pop();
+                while (curNode.left != null || curNode.right != null){
+                    preStr += curNode.val + "->";
+                    curNode = curNode.left;
+                    treeNodes.push(curNode);
+                    pathStr.push(preStr);
+                }
+                paths.add(preStr + curNode.val);
             }
+            /*while (!treeNodes.isEmpty()){
+                TreeNode curNode = treeNodes.pop();
+                String preStr = pathStr.pop();
+                if (curNode.left == null && curNode.right == null)
+                    paths.add(preStr + curNode.val);
+                if (curNode.left != null){
+                    treeNodes.push(curNode.left);
+                    pathStr.push(preStr + curNode.val + "->");
+                }
+                if (curNode.right != null){
+                    treeNodes.push(curNode.right);
+                    pathStr.push(preStr + curNode.val + "->");
+                }
+            }*/
+            return paths;
         }
     }
 }

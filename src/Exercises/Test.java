@@ -1744,16 +1744,16 @@ class Main {
 //    }
 //}
 
-class Main {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        int[] height = new int[n];
-        for (int i = 0; i < ; i++)
-            height[i] = sc.nextInt();
-        int m = sc.nextInt();
-
-    }
-}
+//class Main {
+//    public static void main(String[] args) {
+//        Scanner sc = new Scanner(System.in);
+//        int n = sc.nextInt();
+//        int[] height = new int[n];
+//        for (int i = 0; i < ; i++)
+//            height[i] = sc.nextInt();
+//        int m = sc.nextInt();
+//
+//    }
+//}
 
 
