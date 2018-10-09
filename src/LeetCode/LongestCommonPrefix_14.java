@@ -1,5 +1,5 @@
 package LeetCode;
-import org.junit.Test;
+//import org.junit.Test;
 
 import java.util.Scanner;
 
