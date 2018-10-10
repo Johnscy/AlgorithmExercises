@@ -13,7 +13,7 @@ public class Permutations {
                 System.out.println(temp);
                 return;
             }
-            for(int i=0;i < s.length();i++){
+            for(int i = 0;i < s.length();i++){
                 String news = s.substring(0, i) + s.substring(i + 1,s.length());//去掉String中的某个字母
                 pailie(news, temp + s.charAt(i));
             }
