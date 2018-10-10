@@ -1756,4 +1756,186 @@ class Main {
 //    }
 //}
 
+//2.
+/*class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+        int[][] dp = new int[m + 1][n + 1];
+        int[] prices = new int[10000];
+        int[] grades = new int[10000];
+        for (int i = 1; i <= m; i++) {
+            dp[i][0] = 0;
+        }
+        int i = 0;
+        while(sc.hasNext()){
+            prices[i] = sc.nextInt();
+            grades[i] = sc.nextInt();
+            i++;
+        }
+        for (int k = 1; k < i; k++) {
+            for (int j = n; j >= 1; j--) {
+                if(prices[k - 1] > j)
+                    dp[k][j] = dp[k - 1][j];
+                else{
+                    int temp1 = grades[k - 1] + dp[k - 1][j - prices[k - 1]];
+                    int temp2 = dp[k - 1][j];
+                    if (temp1 > temp2) {
+                        dp[k][j] = temp1;
+                    } else{
+                        dp[k][j] = temp2;
+                    }
+                }
+            }
+        }
+        System.out.println(dp[m][n]);
+    }
+}*/
 
+//3.
+/*class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();sc.nextLine();
+        for (int i = 0; i < n; i++) {
+            String input = sc.nextLine();
+            if (input == null || input.length() <= 0) {
+                System.out.println(0);
+            }
+            String[] str = input.split("");
+            int[] nums = new int[str.length];
+            for (int j = 0; j < str.length; j++) {
+                nums[j] = Integer.valueOf(str[j]);
+            }
+            int res = findTargetSumWays(nums,0);
+            System.out.println(res);
+        }
+    }
+    //数组中的每个数选择自己的符号，P：正数  N：负数
+    // sum(P) - sum(N) = target
+    // sum(P) + sum(N) + sum(P) - sum(N) = target + sum(P) + sum(N)
+    //  2 * sum(P) = target + sum(nums)
+    public static int findTargetSumWays(int[] nums, int S) {
+        if (nums == null || nums.length == 0)
+            return 0;
+        int sum = 0;
+        for (int e : nums) sum += e;
+        if (sum < S || S < -sum || (S + sum) % 2 > 0) //S + sum 必为偶数
+            return 0;
+        return subsetSum(nums,(sum + S) >>> 1); //只需计算正数的情况就行
+    }
+    private static int subsetSum(int[] nums, int s){
+        int[] dp = new int[s + 1];
+        dp[0] = 1; //不选择正数，则全为负数，只有一种方案。
+        for (int n : nums)
+            for (int i = s;i >= n;i--)
+                dp[i] += dp[i - n]; //记录和为i的方案数
+        return dp[s];
+    }
+}*/
+
+//4.
+/*class Main {
+    private static int M;
+    private static int N;
+    private static int maxQNow = 0;
+    private static int P = 0;
+    private static int Q = 0;
+    private static int[][] hahaha= {{1,0},{-1,0},{0,1},{0,-1}};
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int k = in.nextInt();in.nextLine();
+        String[] firstLine = in.nextLine().split(",");
+        N = firstLine.length;
+        int[][] matrix = new int[10000][N];
+        for (int j = 0; j < N; j++)
+            matrix[0][j] = Integer.valueOf(firstLine[j]);
+        int t = 1;
+        while(in.hasNext()){
+            String[] str = in.nextLine().split(",");
+            for (int j = 0; j < N; j++)
+                matrix[t][j] = Integer.valueOf(str[j]);
+            t++;
+        }
+        M = t;
+        int[][] res = new int[M][N];
+        for (int i = 0; i < M; i++) {
+            for (int j = 0; j < N; j++) {
+                if (matrix[i][j] == 0) {
+                    DFS(matrix,res,i,j,k);
+                }
+            }
+        }
+        for (int i = 0; i < M; i++) {
+            for (int j = 0; j < N - 1; j++) {
+                System.out.print(res[i][j] + ",");
+            }
+            System.out.println(res[i][N - 1]);
+        }
+    }
+    private static void DFS(int[][] matrix,int[][] res,int i, int j,int k){
+        if (i >= M || i < 0 || j >= M || j < 0)
+            return;
+        else if (matrix[i][j] == -1)
+            return;
+        else if (matrix[i][j] == 1 && k != 0)
+            return;
+        else if(matrix[i][j] == 1 && k == 0){
+            res[i][j] = 1;
+        }else {
+            k--;
+        }
+        for (int l = 0; l < hahaha.length;l++){
+            DFS(matrix,res,i + hahaha[l][0],j + hahaha[l][1],k);
+        }
+    }
+}*/
+//4
+//        0,-1,1,0
+//        0,0,0,-1
+//        0,-1,0,-1
+//        1,-1,0,0
+
+//3
+class Main {
+    private static int num = 0;
+    public static void main(String[] args) {
+        // TODO Auto-generated method stub
+        Scanner scan =new Scanner(System.in);
+        int n = scan.nextInt();
+        scan.nextLine();
+        String[] strs = new String[n];
+        int[] nums = new int[n];
+        for(int i =0;i<n;i++) {
+            strs[i] = scan.nextLine();
+        }
+        for(int i =0;i<n;i++) {
+            num = 0;
+            dfs(strs[i],0);
+            nums[i] = num;
+        }
+        for(int i =0;i<n;i++) {
+            System.out.println(nums[i]);
+        }
+    }
+    private static void dfs(String string, int sum) {
+        // TODO Auto-generated method stub
+        if(string==null||string.length()==0) {
+            if(sum==0) {
+                num++;
+            }
+            return ;
+        }
+        for(int i =0;i<string.length();i++) {
+            String str = string.substring(0, i+1);
+            int n = Integer.parseInt(str);
+            sum +=n;
+            dfs(string.substring(i+1),sum);
+            sum -=2*n;
+            dfs(string.substring(i+1),sum);
+            sum +=n;
+        }
+    }
+
+}
