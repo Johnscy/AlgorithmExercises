@@ -96,7 +96,7 @@ public class AddTwoNumbersII_445 {
     }
 
     //Iteration 计算出两条链表长度，按末位对齐各位相加(先不管进位，也就是说有结点的值大于9)
-    //结点采用前插法，得到逆序的结果链表res。再从头扫一遍res，处理大于9的结点值。
+    //结点采用前插法，得到逆序的结果链表res。再从头扫一遍res，处理大于9的结点值。最后再用前插法把修正的结点插到res中。
     class Solution_Iteration2 {
         public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
             if (l1 == null) return l2;
