@@ -23,7 +23,6 @@ public class ConvertSortedListToBinarySearchTree_109 {
         ListNode(int x) { val = x; }
     }
 
-
     //Definition for a binary tree node.
     public class TreeNode {
         int val;
@@ -32,8 +31,8 @@ public class ConvertSortedListToBinarySearchTree_109 {
         TreeNode(int x) { val = x; }
     }
 
-    //Iteration
-    class Solution_Iteration {
+    //Recursion
+    class Solution_Recursion {
         public TreeNode sortedListToBST(ListNode head) {
             if (head == null)   return null;
             if (head.next == null) return new TreeNode(head.val);
@@ -43,7 +42,9 @@ public class ConvertSortedListToBinarySearchTree_109 {
                 slow = slow.next;
             }
             TreeNode root = new TreeNode(slow.val);
-
+            root.left = sortedListToBST(head);
+            root.right = sortedListToBST(slow.next);
+            return root;
         }
     }
 }
