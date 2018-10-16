@@ -4,14 +4,14 @@ import java.util.Scanner;
 public class Attack {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int T = sc.nextInt();
+        long T = sc.nextInt();
         for (int i = 0; i < T; i++) {
-            int X = sc.nextInt();
-            int A = sc.nextInt();
-            int C = sc.nextInt();
-            int Y = sc.nextInt();
-            int B = sc.nextInt();
-            int D = sc.nextInt();
+            long X = sc.nextInt();
+            long A = sc.nextInt();
+            long C = sc.nextInt();
+            long Y = sc.nextInt();
+            long B = sc.nextInt();
+            long D = sc.nextInt();
             if (X <= B && Y <= A){
                 System.out.println("TIE");
                 continue;
@@ -22,8 +22,8 @@ public class Attack {
                 System.out.println("XIAOZHI");
                 continue;
             }
-            int t1 = X / B, t2 = Y / A;
-            int time1 = D * t1, time2 = C * t2;
+            long t1 = X / B, t2 = Y / A;
+            long time1 = D * t1, time2 = C * t2;
             if (X % B == 0) time1 -= D;
             if (Y % A == 0) time2 -= C;
             if (time1 == time2)
