@@ -85,6 +85,7 @@ public class ConvertSortedListToBinarySearchTree_109 {
         }
     }
 
+    //test
     public static int[] stringToIntegerArray(String input) {
         input = input.trim();
         input = input.substring(1, input.length() - 1);
