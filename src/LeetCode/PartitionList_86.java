@@ -18,27 +18,57 @@ public class PartitionList_86 {
         ListNode(int x) { val = x; }
     }
 
+    //在一个链表里进行操作
     class Solution {
         public ListNode partition(ListNode head, int x) {
             if (head == null || head.next == null)
                 return head;
-            ListNode dummy = new ListNode(-1);
+            ListNode dummy = new ListNode(Integer.MIN_VALUE);
             dummy.next = head;
-            ListNode prevLessThanX = dummy, cur = head, pre = head;
-            while (cur != null){
-                if (cur.val < x){
-                    if (pre.val >= x)
-                        pre.next = cur.next;
-                    if (cur != head)
-                        cur.next = prevLessThanX.next;
-                    prevLessThanX.next = cur;
-                    prevLessThanX = cur;
-                }
-                if (pre != head)
+            ListNode prevLessThanX = dummy, pre = dummy;
+            while (head != null){
+                if (head.val < x){
+                    if (pre.val >= x) {
+                        pre.next = head.next;
+                        if (dummy.next != head)
+                            head.next = prevLessThanX.next;
+                        prevLessThanX.next = head;
+                    }else {
+                        pre = pre.next;
+                    }
+                    prevLessThanX = head;
+                }else {
                     pre = pre.next;
-                cur = pre.next;
+                }
+                head = pre.next;
             }
             return dummy.next;
+        }
+    }
+
+    //按大小分到两个链表，然后连接起来
+    class Solution_Merge2List {
+        public ListNode partition(ListNode head, int x) {
+            if (head == null || head.next == null)
+                return head;
+            ListNode dummy1 = new ListNode(-1), dummy2 = new ListNode(-1);
+            ListNode cur1 = dummy1, cur2 = dummy2;
+            while (head != null) {
+                if (head.val < x) {
+                    cur1.next = head;
+                    cur1 = head;
+                    head = head.next;
+                    cur1.next = null;
+                }else {
+                    cur2.next = head;
+                    cur2 = head;
+                    head = head.next;
+                    cur2.next = null;
+                }
+            }
+            cur2.next = null;
+            cur1.next = dummy2.next;
+            return dummy1.next;
         }
     }
 }
