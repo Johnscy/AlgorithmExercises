@@ -40,9 +40,9 @@ public class LinkedListCycle_141 {
             if (head == null || head.next == null)
                 return false;
             if (head.next == head)
-                return true;
+                return true;    //当有环时，“环尾”的next指向链表前面的结点，而此时该结点的next已指向自己。
             ListNode nextNode = head.next;
-            head.next = head;
+            head.next = head;   //每检查一个结点，就将结点的next指向自己，作为标志
             return hasCycle(nextNode);
         }
     }
