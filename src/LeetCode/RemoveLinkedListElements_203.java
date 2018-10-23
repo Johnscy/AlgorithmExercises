@@ -20,6 +20,28 @@ public class RemoveLinkedListElements_203 {
     class Solution_Recursion {
         public ListNode removeElements(ListNode head, int val) {
             if (head == null)
+                return head;
+            head.next = removeElements(head.next,val);
+            return head.val == val ? head.next : head;
+        }
+    }
+
+    //Iteration
+    class Solution_Iteration {
+        public ListNode removeElements(ListNode head, int val) {
+            if (head == null)
+                return head;
+            ListNode dummy = new ListNode(-1), pre = dummy;
+            dummy.next = head;
+            while (head != null){
+                if (head.val != val){
+                    pre = pre.next;
+                }else{
+                    pre.next = head.next;
+                }
+                head = head.next;
+            }
+            return dummy.next;
         }
     }
 }
