@@ -19,20 +19,25 @@ public class ReverseLinkedListII_92 {
         ListNode(int x) { val = x; }
     }
 
+    //Iteration      one pass
     class Solution {
         public ListNode reverseBetween(ListNode head, int m, int n) {
-            if (head == null || head.next == null || m == n)
+            if (head == null || head.next == null || n <= m)
                 return head;
-            ListNode cur = head,pre = head;
-
-        }
-
-        private ListNode reverseList(ListNode head){
-            ListNode dummy = null;
-            while (head != null){
-                ListNode next = head.next;
-
+            ListNode dummy = new ListNode(-1),pre = dummy;
+            dummy.next = head;
+            for (int i = 0; i < m - 1; i++) {
+                pre = pre.next;
             }
+            ListNode start = pre.next, next = start.next;
+            for (int i = 0; i < n - m; i++) {
+                start.next = next.next;
+                next.next = pre.next;
+                pre.next = next;
+                next = start.next;
+            }
+            return dummy.next;
         }
+
     }
 }
