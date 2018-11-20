@@ -11,7 +11,7 @@ package LeetCode;
  * The outputs [4,2,3,1], [2,4,1,3], and [4,2,1,3] would also be accepted.
  */
 public class SortArrayByParity_905 {
-    //O(N)，并且相对位置不打乱。
+    //O(N)，并且相对位置不打乱。 !!!!有问题[1,2,3,4,5,6,7]，并不能保证相对位置不乱
     class Solution_Best {
         public int[] sortArrayByParity(int[] A) {
             for (int i = 0, j = 0; i < A.length; i++)
