@@ -26,7 +26,7 @@ public class FindLargestValueInEachTreeRow_515 {
     //BFS
     class Solution_BFS {
         public List<Integer> largestValues(TreeNode root) {
-            List<Integer> res = new LinkedList<>();
+            List<Integer> res = new ArrayList<>();
             if (root == null)   return res;
             Queue<TreeNode> queue = new LinkedList<>();
             queue.add(root);
@@ -50,7 +50,7 @@ public class FindLargestValueInEachTreeRow_515 {
     //DFS
     class Solution_DFS {
         public List<Integer> largestValues(TreeNode root) {
-            List<Integer> res = new LinkedList<>();
+            List<Integer> res = new ArrayList<>();
             helper(root,res,0);
             return res;
         }
