@@ -1,2 +1,2 @@
-# Algorithms_exercise
+# AlgorithmsExercise
 No time to waste.Step forward every day.
