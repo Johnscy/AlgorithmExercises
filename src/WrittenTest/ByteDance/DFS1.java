@@ -34,7 +34,7 @@ public class DFS1 {
         System.out.println(Q);
     }
     private static void DFS(int[][] matrix,boolean[][] hasPassedBy,int i, int j){
-        if (i >= M || i < 0 || j >= M || j < 0)
+        if (i >= M || i < 0 || j >= N || j < 0)
             return;
         else if (matrix[i][j] == 0 || hasPassedBy[i][j])
             return;
