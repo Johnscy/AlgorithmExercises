@@ -31,9 +31,43 @@ package LeetCode;
  * There is no path that walks over every empty square exactly once.Note that the starting and ending square can be anywhere in the grid.
  */
 public class UniquePathsIII_980 {
+    //DFS
     class Solution {
+        private final int[][] moveOn = {{1,0},{-1,0},{0,1},{0,-1}};
+        private int M;
+        private int N;
+        private int res;
         public int uniquePathsIII(int[][] grid) {
+            if (grid == null || grid.length == 0 || grid[0].length == 0)
+                return 0;
+            int M = grid.length, N = grid[0].length;
+            this.M = M;this.N = N;
+            boolean[][] hasWalkedOver = new boolean[M][N];
+            for (int i = 0; i < M; i++) {
+                for (int j = 0; j < N; j++) {
+                    if (grid[i][j] == 1) {      //找到起始点1才会开始DFS
+                        DFS(grid,hasWalkedOver,i,j);
+                    }
 
+                }
+            }
+            return res;
+        }
+
+        private void DFS(int[][] matrix,boolean[][] hasWalkedOver,int i,int j){
+            if (i < 0 || i >= M || j < 0 || j >= N)
+                return;
+            else if (matrix[i][j] == -1)
+                return;
+            else if (matrix[i][j] == 2) {
+                res++;
+                return;
+            }
+            else
+                hasWalkedOver[i][j] = true;
+            for (int k = 0; k < moveOn.length; k++) {
+                DFS(matrix,hasWalkedOver,i+ moveOn[k][0],j + moveOn[k][1]);
+            }
         }
     }
 }
