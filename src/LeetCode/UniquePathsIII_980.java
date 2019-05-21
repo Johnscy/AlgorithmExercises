@@ -34,40 +34,46 @@ public class UniquePathsIII_980 {
     //DFS
     class Solution {
         private final int[][] moveOn = {{1,0},{-1,0},{0,1},{0,-1}};
-        private int M;
-        private int N;
-        private int res;
+        private int M, N, startX, startY, endX, endY;
+        private int empty = 1, res = 0; //empty记录0的个数，多加1是因为要将起始点第一次置为-2
         public int uniquePathsIII(int[][] grid) {
             if (grid == null || grid.length == 0 || grid[0].length == 0)
                 return 0;
             int M = grid.length, N = grid[0].length;
             this.M = M;this.N = N;
-            boolean[][] hasWalkedOver = new boolean[M][N];
             for (int i = 0; i < M; i++) {
                 for (int j = 0; j < N; j++) {
                     if (grid[i][j] == 1) {      //找到起始点1才会开始DFS
-                        DFS(grid,hasWalkedOver,i,j);
-                    }
-
+                        startX = i;
+                        startY = j;             //记录起始点坐标方便找到一个方案后重新继续寻找
+                    }else if (grid[i][j] == 2){
+                        endX = i;
+                        endY = j;
+                    }else if (grid[i][j] == 0)
+                        empty++;
                 }
             }
+            DFS(grid,startX,startY);
             return res;
         }
 
-        private void DFS(int[][] matrix,boolean[][] hasWalkedOver,int i,int j){
-            if (i < 0 || i >= M || j < 0 || j >= N)
+        private void DFS(int[][] matrix,int i,int j){
+            if (i < 0 || i >= M || j < 0 || j >= N || matrix[i][j] < 0)
                 return;
-            else if (matrix[i][j] == -1)
-                return;
-            else if (matrix[i][j] == 2) {
-                res++;
+            else if (i == endX && j == endY) {
+                if (empty == 0)
+                    res++;
                 return;
             }
-            else
-                hasWalkedOver[i][j] = true;
+            else{
+                matrix[i][j] = -2; //将走过的0和起始点1置为-2，之后遇到可以在第一个if直接return
+                empty--;
+            }
             for (int k = 0; k < moveOn.length; k++) {
-                DFS(matrix,hasWalkedOver,i+ moveOn[k][0],j + moveOn[k][1]);
+                DFS(matrix,i + moveOn[k][0],j + moveOn[k][1]);
             }
+            matrix[i][j] = 0; //重新置为0
+            empty++;
         }
     }
 }
