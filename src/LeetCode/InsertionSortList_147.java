@@ -28,6 +28,7 @@ public class InsertionSortList_147 {
         ListNode(int x) { val = x; }
     }
 
+    //dummy node
     class Solution {
         public ListNode insertionSortList(ListNode head) {
             if (head == null || head.next == null)
