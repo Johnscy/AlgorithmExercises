@@ -29,11 +29,11 @@ public class LeafSimilarTrees_872 {
             Stack<TreeNode> stack1 = new Stack<>(), stack2 = new Stack<>();
             stack1.push(root1);stack2.push(root2);
             while (!stack1.empty() && !stack2.empty())
-                if (dFS(stack1) != dFS(stack2))
+                if (dfs(stack1) != dfs(stack2))
                     return false;
             return stack1.empty() && stack2.empty();
         }
-        private int dFS(Stack<TreeNode> s){
+        private int dfs(Stack<TreeNode> s){
             while (true){
                 TreeNode node = s.pop();
                 if (node.right != null)
