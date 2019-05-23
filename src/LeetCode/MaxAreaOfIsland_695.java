@@ -37,14 +37,14 @@ public class MaxAreaOfIsland_695 {
             for (int i = 0;i < m;i++)
                 for (int j = 0; j < n; j++) {
                     if (!hasUsed[i][j] && grid[i][j] == 1){
-                        dFS(grid,hasUsed,i,j);
+                        dfs(grid,hasUsed,i,j);
                         maxArea = maxArea > maxAreaNow ? maxArea : maxAreaNow;
                         maxAreaNow = 0;
                     }
                 }
             return maxArea;
         }
-        private void dFS(int[][] matrix, boolean[][] hasUsed, int i, int j){
+        private void dfs(int[][] matrix, boolean[][] hasUsed, int i, int j){
             if (i < 0 || i >= m || j < 0 || j >= n || matrix[i][j] == 0 || hasUsed[i][j])
                 return;
             else{
@@ -52,7 +52,7 @@ public class MaxAreaOfIsland_695 {
                 hasUsed[i][j] = true;
             }
             for (int k = 0; k < 4; k++)
-                dFS(matrix,hasUsed,i + directions[k][0],j + directions[k][1]);
+                dfs(matrix,hasUsed,i + directions[k][0],j + directions[k][1]);
         }
     }
 }
