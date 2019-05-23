@@ -13,8 +13,9 @@ public class CopyListWithRandomPointer_138 {
         int label;
         RandomListNode next, random;
         RandomListNode(int x) { this.label = x; }
-    };
+    }
 
+    //在每个结点后面复制结点，设置好指向后断开两条链表
     public class Solution {
         public RandomListNode copyRandomList(RandomListNode head) {
             if (head == null)
