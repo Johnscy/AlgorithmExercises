@@ -25,8 +25,9 @@ public class MinimumDepthOfBinaryTree_111 {
         TreeNode right;
         TreeNode(int x) { val = x; }
     }
+
     //BFS，层序遍历，Queue
-    public class Solution {
+    public class Solution_Queue {
         public int minDepth(TreeNode root) {
             if(root == null)
                 return 0;
