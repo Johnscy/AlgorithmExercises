@@ -34,6 +34,7 @@ public class DesignLinkedList_707 {
                 this.val = val;
             }
         }
+
         //可以使用头尾两指针，更快
         private ListNode curHead;
         //private ListNode curTail;
