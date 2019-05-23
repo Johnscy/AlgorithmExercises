@@ -53,11 +53,11 @@ public class UniquePathsIII_980 {
                         empty++;
                 }
             }
-            DFS(grid,startX,startY);
+            dfs(grid,startX,startY);
             return res;
         }
 
-        private void DFS(int[][] matrix,int i,int j){
+        private void dfs(int[][] matrix,int i,int j){
             if (i < 0 || i >= M || j < 0 || j >= N || matrix[i][j] < 0)
                 return;
             else if (i == endX && j == endY) {
@@ -70,7 +70,7 @@ public class UniquePathsIII_980 {
                 empty--;
             }
             for (int k = 0; k < moveOn.length; k++) {
-                DFS(matrix,i + moveOn[k][0],j + moveOn[k][1]);
+                dfs(matrix,i + moveOn[k][0],j + moveOn[k][1]);
             }
             matrix[i][j] = 0; //重新置为0
             empty++;
