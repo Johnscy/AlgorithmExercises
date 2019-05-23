@@ -21,7 +21,7 @@ public class FindTheDuplicateNumber_287 {
                 return 0;
             int res = 0;
             for(int i = 0;i < nums.length;++i)
-                nums[i] -= 1;   //为了和索引对上，可以全部元素-1处理。更加清晰。
+                nums[i] -= 1;    //为了和索引对上，可以全部元素-1处理。更加清晰。
             for(int i = 0;i < nums.length;++i){
                 if(nums[i] != i){
                     while(nums[i] != i){
