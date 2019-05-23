@@ -21,6 +21,7 @@ public class SortList_148 {
             next = null;
         }
     }
+
     //归并排序
     public class Solution {
         public ListNode sortList(ListNode head) {
