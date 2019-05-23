@@ -22,6 +22,7 @@ public class ReorderList_143 {
         ListNode(int x) { val = x; }
     }
 
+    //Two Pointers
     //思路：先用快慢双指针找到中点（注意用fast != null && fast.next != null来判定），然后把后面一截翻转，
     // 再将两段依次你一个我一个的重新排列链接。
     class Solution_TwoPointers {
