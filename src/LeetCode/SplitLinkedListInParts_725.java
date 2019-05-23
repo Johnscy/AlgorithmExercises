@@ -46,7 +46,7 @@ public class SplitLinkedListInParts_725 {
             ListNode node = root, pre = null;
             for (int i = 0;i < k && node != null;i++,r--){
                 res[i] = node;
-                for (int j = 0;j < n + (r > 0 ? 1 : 0);j++){    //给每个部分个数计数
+                for (int j = 0;j < n + (r > 0 ? 1 : 0);j++){     //给每个部分个数计数
                     pre = node;
                     node = node.next;
                 }
