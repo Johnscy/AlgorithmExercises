@@ -36,7 +36,7 @@ public class HouseRobberIII_337 {
         TreeNode right;
         TreeNode(int x) { val = x; }
     }
-    //递归，隔层算和，再比较
+    //递归，隔层算和，再进行比较
     class Solution {
         public int rob(TreeNode root) {
             if(root == null)
