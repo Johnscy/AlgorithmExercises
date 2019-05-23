@@ -24,7 +24,7 @@ public class LinkedListCycleII_142 {
     }
 
     //找出环的入口
-    //Two pointers       fast & slow
+    //Two pointers      fast & slow
     //当fast == slow时，将其中一个指向head，另一个原地不动，然后一起推进，当相遇时，结点即为环的入口。
     public class Solution {
         public ListNode detectCycle(ListNode head) {
