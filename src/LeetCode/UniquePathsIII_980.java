@@ -57,7 +57,7 @@ public class UniquePathsIII_980 {
             return res;
         }
 
-        private void dfs(int[][] matrix,int i,int j){
+        private void dfs(int[][] matrix, int i, int j){
             if (i < 0 || i >= M || j < 0 || j >= N || matrix[i][j] < 0)
                 return;
             else if (i == endX && j == endY) {
