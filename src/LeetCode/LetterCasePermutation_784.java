@@ -28,7 +28,7 @@ public class LetterCasePermutation_784 {
             return res;
         }
 
-        private void backtrack(char[] chs,int i,List<String> list){
+        private void backtrack(char[] chs, int i, List<String> list){
             if (i == chs.length) {
                 list.add(new String(chs));
                 return;
