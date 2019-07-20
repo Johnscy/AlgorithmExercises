@@ -1,6 +1,5 @@
 .sw*
 build
-out
 /classes
 logs/
 .DS_Store
